@@ -4,3 +4,4 @@ django_static
 db.sqlite3
 npm-debug.log
 elasticsearch-7.12.1
+venv
