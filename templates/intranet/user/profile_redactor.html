@@ -1,0 +1,12 @@
+{% extends "intranet/home/home_page.html" %}
+{% load static %}
+{% block content %}
+        <link rel="stylesheet" type="text/css" href = "{% static 'css/home_page.css' %}">
+    <p>Redact profile</p>
+    <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/"  method="post" enctype="multipart/form-data">
+    {{ form.as_p|safe}}
+    {% csrf_token %}
+    <p><input type="submit" value="Save changes"></p>
+  </form>
+
+{% endblock %}

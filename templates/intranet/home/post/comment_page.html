@@ -1,0 +1,48 @@
+{% extends 'intranet/home/home_page.html' %}
+{% load markdown_extras %}
+{% block title %}comment{% endblock %}
+{% block content %}
+    {% with comments.count as total_comments %}
+<h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+</h2>
+{% endwith %}
+{#          <h2>Add a new comment</h2>#}
+{#  <form action="." method="post">#}
+{#    {{form.as_p }}#}
+{#    {% csrf_token %}#}
+{#    <p><input type="submit" value="Add comment"></p>#}
+{#    </form>#}
+{##}
+{#    {% for comment in comments%}#}
+        <p>{{ comment.author }} on {{ comment.created_at }}</p>
+        <p>{{ comment.body|markdown|safe|linebreaks }}</p>
+
+{#         <form action="." method="post">#}
+{#                  {% csrf_token %}#}
+{#                  <input type = 'hidden' name = 'comment_id' value="{{ comment.id }}">#}
+{#                    {{form.as_p }}#}
+{##}
+{#                    <p><input type="submit" value="Reply"></p>#}
+{#              </form>#}
+{#            <div class="reply-section">#}
+{##}
+{#                {% for reply in comment.replies.all %}#}
+{#                    <h3>{{ reply.author|capfirst }} on {{ reply.created_at }}</h3>#}
+{#                    <p>{{ reply.body|markdown|safe|linebreaks }}</p>#}
+{##}
+{##}
+{##}
+{#              <form action="." method="post">#}
+{#                  {% csrf_token %}#}
+{#                  <input type = 'hidden' name = 'comment_id' value="{{ comment.id }}">#}
+{#                    {{form.as_p }}#}
+{##}
+{#                    <p><input type="submit" value="Reply"></p>#}
+{#              </form>#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+{##}
+{#    {% endfor %}#}
+{% endblock %}

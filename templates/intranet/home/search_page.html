@@ -1,0 +1,41 @@
+{% extends 'intranet/home/home_page.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+  {% if query %}
+      {{ sd }}
+    <h1>Posts containing "{{ query }}"</h1>
+    <h3>
+      {% with results.count as total_results %}
+	Found {{ total_results }} result{{ total_results|pluralize }}
+      {% endwith %}
+    </h3>
+    {% for post in results %}
+        <h2>
+            {{ post.title }}
+        </h2>
+    <p class="date">
+            Published by {{ post.author.email|safe }}
+        <p>
+            On  {{ post.published_at|safe }}
+        </p>
+        <p>{{ post.description|safe }}</p>
+            <p>
+    {% for tag in post.tag.all %}
+        <a href = "http://127.0.0.1:8000/tag={{tag.name}}">{{tag.name}}</a>
+    {% endfor %}</p>
+        <ul>
+        <li data-id="{{ post.pk }}" data-type="post" data-action="like" title="Нравится">
+            <span><img src = '../../../../media/ld/like.png' width="32" height="32" id = 'like-btn'  ></span>
+            <span data-count="like">{{ post.votes.likes.count }}</span>
+        </li>
+        <li data-id="{{ post.pk }}" data-type="post" data-action="dislike" title="Не нравится">
+            <span><img src = '../../../../media/ld/dislike.png' width="32" height="32" id = 'dislike-btn'></span>
+            <span data-count="dislike">{{ post.votes.dislikes.count }}</span>
+        </li>
+    </ul>
+        <p><a href="{{ post.get_absolute_url }}" id = 'post_link'>See more...</a></p>
+    </p>
+    {% endfor %}
+  {% else %}
+  {% endif %}
+{% endblock %}

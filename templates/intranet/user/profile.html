@@ -1,0 +1,53 @@
+{#{% extends "intranet/home/home_page.html" %}#}
+{% load static %}
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/home_page.css' %}">
+</head>
+{% block content %}
+    <div id = 'FCS'>
+        <p><img src="{{ user.avatar.url}}" id = 'profile-pic' width = 200px height =200px ></p>
+        <p> {{ user.first_name }}
+            {{ user.last_name }}
+        </p>
+        <p> {{ user.email }}</p>
+        <p> {{ user.last_login_at }}
+            {{ user.created_at }}
+        </p>
+
+        <p>{{ user.about }}</p>
+
+    </div>
+    <p><a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/">Add a new post</a></p>
+    <p><a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor">Redact profile</a></p>
+        {% for post in posts %}
+
+        <h2>
+            {{ post.title }}
+        </h2>
+    <p class="date">
+            Published by {{ post.author.email }}
+        <p>
+            On  {{ post.published_at }}
+        </p>
+        <p>{{ post.description|safe }}</p>
+            <p>
+    {% for tag in post.tag.all %}
+        <a href = "http://127.0.0.1:8000/tag={{tag.name}}">{{tag.name}}</a>
+    {% endfor %}</p>
+        <p><a href="{{ post.get_absolute_url }}" id = 'post_link'>See more...</a></p>
+    </p>
+      <ul>
+        <li data-id="{{ post.pk }}" data-type="post" data-action="like" title="Нравится">
+            <span><img src = '../../../../media/ld/like.png' width="32" height="32" id = 'like-btn'  ></span>
+            <span data-count="like">{{ post.votes.likes.count }}</span>
+        </li>
+        <li data-id="{{ post.pk }}" data-type="post" data-action="dislike" title="Не нравится">
+            <span><img src = '../../../../media/ld/dislike.png' width="32" height="32" id = 'dislike-btn'></span>
+            <span data-count="dislike">{{ post.votes.dislikes.count }}</span>
+        </li>
+    </ul>
+    {% endfor %}
+{% endblock %}

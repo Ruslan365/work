@@ -1,0 +1,10 @@
+{#{% extends "intranet/home/home_page.html" %}#}
+{% block content %}
+    <p>Add a new post</p>
+  <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post">
+    {{ post_form.as_p|safe}}
+    {% csrf_token %}
+      <p><input type="submit" value="Add post"></p>
+  </form>
+    <a href = "{% url 'intranet:user_profile' user.id %}">Back</a>
+{% endblock %}

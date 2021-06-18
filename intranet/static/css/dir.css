@@ -1,0 +1,9 @@
+.search-box{
+    display: flex;
+    position: absolute;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    margin-top: 0.65%;
+    padding: 0.1% 0.1% 0.4% 0.4%;
+    margin-left: 42%;
+}

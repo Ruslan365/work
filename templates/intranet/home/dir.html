@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">
+    </script>
+
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">
+    </script>
+
+    <link href=
+"http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+    <meta charset="UTF-8">
+    <title>фон</title>
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/dir.css' %}">
+  <style>
+   body {
+    background: #96cfff; /*url(images/bg.jpg); /* Цвет фона и путь к файлу */
+    color: #fff; /* Цвет текста */
+   }
+  </style>
+</head>
+<body>
+
+<h1 align="center" style="color:Black">Choose your slave</h1>
+<p class="sidebar-paragraph"><a href="http://127.0.0.1:8000" class="sidebar-element">Главная страница</a></p>
+<div class = "search-box">
+  <form>
+   <p><input type="search" name="q" placeholder="Поиск по сайту" id = 'tags'>
+        <script>
+  $( function() {
+    var availableTags = [
+        {% for email in user_emails %}
+            "{{email}}",
+        {% endfor %}
+    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script>
+  </form>
+    </div>
+</body>
+</html>
