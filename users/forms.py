@@ -18,7 +18,8 @@ class UserForm(forms.ModelForm):
             "first_name",
             "last_name",
             "about",
-
+            "twitter_id",
+            "facebook_id",
         )
     birth_date = forms.DateTimeField(
     input_formats = ['%Y-%m-%dT%H:%M'],
@@ -27,4 +28,4 @@ class UserForm(forms.ModelForm):
             'type': 'datetime-local',
             'class': 'form-control'},
         format='%Y-%m-%dT%H:%M'))
-    avatar = forms.ImageField(widget=PictureWidget)
+    avatar = forms.ImageField() #widget=PictureWidget

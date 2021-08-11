@@ -14,6 +14,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 
+
 .scheme_original h1, .scheme_original h2, .scheme_original h3, .scheme_original h4, .scheme_original h5, .scheme_original h6, .scheme_original h1 a, .scheme_original h2 a, .scheme_original h3 a, .scheme_original h4 a, .scheme_original h5 a, .scheme_original h6 a {
     color: #2a3342;
 }
@@ -104,7 +105,8 @@ body{
     width: 100%;
     height:160.033px;
     position: relative;
-    background-color:#E9E9E9;
+    background-color:#191315;
+    margin-bottom: 44px;
 }
 
 
@@ -118,7 +120,7 @@ body{
 }
 
 .top_panel_wrap_inner, .page_content_wrap, .footer_wrap {
-    padding: 0 12px 0 12px;
+    padding: 0 12px 0 37px;
     width: 1584px;
 }
 
@@ -127,14 +129,7 @@ body{
     max-width: 932px;
 }
 
-.top_panel_wrap_inner::before {
-    content: '';
-    display: table-cell;
-    width: 98px;
-    height: 1px;
-}
-
-.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
+.pushy_button.sc_button{
     padding: 0;
     font-size: 1.2em;
     width: 2.143em;
@@ -185,14 +180,12 @@ body{
     padding-left: 3.57em;
 }
 
-.contact_logo{
+.contact_logo {
     width: 100%;
 }
-.content_wrap_head {
-    text-align: center;
-}
+
 .logo {
-    margin: 2.92em 0 2.8em;
+    margin: 54px 0px 47px 0px;
     overflow: hidden;
 }
 
@@ -204,13 +197,12 @@ body{
     background-color: #ffffff;
 }
 
-.top_panel_controls .sidebar_pushy, .top_panel_controls .search_wrap {
+.sidebar_pushy {
     display: inline-block;
     vertical-align: top;
-    margin-left: 5px;
 }
 
-.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
+ .pushy_button.sc_button  {
     padding: 0;
     font-size: 1.2em;
     width: 2.143em;
@@ -431,9 +423,9 @@ A{
     transform: translateX(-50%);
 }
 
-.menu_main_nav > li.current_menu_ancestor > a {
-    background-color: #1ebeb4;
-}
+/*.menu_main_nav > li.current_menu_ancestor > a {*/
+/*    background-color: #2b2d2d;*/
+/*}*/
 
 .menu_main_nav > li > a {
     display: block;
@@ -493,6 +485,7 @@ A{
 
 .icon-school::before {
     content: '\e805';
+    color: #383a3f;
 }
 
 .icon-book::before {
@@ -523,30 +516,9 @@ A{
     color: #FFFFFF;
 }
 
-.top_panel_controls .sidebar_pushy, .top_panel_controls .search_wrap {
+ .sidebar_pushy{
     display: inline-block;
     vertical-align: top;
-    margin-left: 5px;
-}
-
-.search_wrap {
-    position: relative;
-    max-width: 10em;
-    min-width: 2.2857em;
-    z-index: 1001;
-}
-
-.search_style_fullscreen .search_form {
-    padding: 0;
-    text-align: center;
-}
-
-.search_wrap form {
-    width: 100%;
-    position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 input[type="submit"], input[type="reset"], input[type="button"], button, .sc_button, .sc_button.sc_button_style_filled {
@@ -594,7 +566,7 @@ input[type="submit"]::before, input[type="button"]::before, button::before, .sc_
     margin-right: 0px;
 }
 
-.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
+ .pushy_button.sc_button{
     font-size: 1.2em;
     line-height: 2.143em;
     text-align: center;
@@ -620,6 +592,7 @@ input[type="submit"], input[type="button"], button, .sc_button {
 
 .icon-search-1::before {
     content: '\e800';
+    color: #8a8d90;
 }
 
 .top_panel_title_inner {
@@ -748,11 +721,6 @@ a {
     margin: 0;
     /*float:left;*/
 }
-
-.post_content{
-    float:left;
-}
-
 .widget_area aside .post_item + .post_item, .search_results.widget_area .post_item + .post_item {
     margin-top: 1.7em;
 }
@@ -821,12 +789,107 @@ figure, .wp_caption_overlay .wp_caption {
 }
 
 .post_preview_image{
-    height:75px;
-    width: 75px;
+    height:65px;
+    width: 65px;
 }
 
 
+#myOverlay{
+    height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, 0.7); /* Black with a little bit see-through */
+}
 
+
+.search_wrap{
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  /*background-color: rgba(0,0,0,0.7);*/
+  background-color: rgba(0,0,0, 0.9); /* Black with a little bit see-through */
+}
+
+/* The content */
+    .search_form_wrap {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+/* Close button */
+.search_wrap {
+  position: absolute;
+  top: 225px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: black;
+}
+
+.closebtn {
+  position: absolute;
+  top: 300px;
+  right: 450px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.search_wrap .closebtn:hover {
+  color: #ccc;
+}
+
+/* Style the search field */
+.search_wrap input[type=text] {
+  padding: 15px;
+  font-size: 25px;
+  border: none;
+  float: left;
+  width: 80%;
+  background-color: rgba(0,0,0, 0);
+    color: white;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+
+.search_wrap input[type=text]:hover {
+  background: rgba(0,0,0, 0);
+}
+
+/* Style the submit button */
+.search_wrap button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search_wrap button:hover {
+  background: #bbb;
+}
+
+.post_title A{
+    color: #2A3342;
+}
+
+.post_title a:hover{
+    color: #1ebeb4;
+}
 
 
 
@@ -1316,6 +1379,7 @@ A:hover{
         border-left-color: currentcolor;
     padding: 2.6em 1.85em;
     overflow: hidden;
+     min-height: 75px;
 }
 
  .post_author .post_author_avatar {
@@ -1603,7 +1667,7 @@ input[type="submit"], input[type="button"], button, .sc_button {
     display: inline-block;
     text-align: center;
     font-weight: 500;
-    padding: 14px 51px;
+    padding: 0.6em 0.8em;
     border-bottom: 1.5px solid rgba(0, 0, 0, 0.25) !important;
     border-radius: 3px;
 }
@@ -1622,4 +1686,221 @@ button, input, optgroup, select, textarea {
 
 .post_author {
     background-color: #f7f7f7;
+}
+
+/*.icon-school {*/
+/*    background-color: #FFFFFF;*/
+/*}*/
+
+.menu-item-has-children:hover{
+    background-color: #22cabf;
+    border-radius: 3px;
+    /*display: block;*/
+}
+
+.closebtn {
+  position: absolute;
+  top: 300px;
+  right: 450px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+.wpb_wrapper{
+    word-break: break-word;
+}
+
+#id-body .form-control{
+    resize: none;
+    width: 848px;
+    height: 68px;
+}
+
+textarea{
+    resize: none;
+    width: 848px;
+    height: 68px;
+}
+
+.social_icons{
+    display: inline-block;
+}
+
+.social_twitter .sc_socials_hover {
+    background-image: url(../images/twitter.png);
+}
+
+.sc_socials a {
+    overflow: hidden;
+    font-size: 1rem;
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    height: 42px;
+    width: 42px;
+}
+
+.sc_socials a {
+    display: inline-block;
+    outline: none;
+    background-size: cover;
+    background-position: center;
+}
+.sc_socials.sc_socials_share .share_caption {
+    display: inline-block;
+    font-size: 1.28em;
+    line-height: 2.5em;
+    margin-right: 0.6em;
+}
+
+.sc_socials .sc_socials_item {
+    display: inline-block;
+    margin: 0 4px 4px 0;
+    outline: none;
+}
+
+.sc_socials.sc_socials_share .sc_socials_item {
+    vertical-align: top;
+}
+
+.widget_birthdays ul {
+    padding: 0;
+}
+
+.widget_area ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.widget_birthdays ul li {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.widget_birthdays .post_thumb_bday {
+    width: 38px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+    /*float: left;*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.date_bday {
+    font-size: 0.857em;
+    line-height: 1.75em;
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-left: 3px;
+}
+
+.date_bday {
+    background-color: #1ebeb4;
+    color: white;
+}
+
+.widget_birthdays  {
+    color: #2a3342;
+}
+
+strong {
+    font-weight: bold;
+}
+
+
+.top_panel_controls {
+    float: right;
+}
+
+
+.search_wrap {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0, 0.9);
+}
+
+.closebtn {
+    position: absolute;
+    top: 400px;
+    right: 450px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.search_form_wrap {
+    position: relative;
+    top: 46%;
+    width: 80%;
+    text-align: center;
+    margin-top: 30px;
+    margin: auto;
+}
+
+.search_form_wrap {
+    text-align: center;
+}
+
+.search_wrap input[type="text"] {
+    padding: 15px;
+        padding-bottom: 15px;
+    font-size: 25px;
+    border: none;
+        border-bottom-color: currentcolor;
+        border-bottom-style: none;
+        border-bottom-width: medium;
+    float: left;
+    width: 80%;
+    background-color: rgba(0,0,0, 0);
+    color: white;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+
+.search_submit {
+    font-size: 1.2em;
+    line-height: 2.143em;
+    text-align: center;
+}
+.top_panel_controls .search_submit {
+    padding: 0;
+    font-size: 1.2em;
+    width: 2.143em;
+    height: 2.143em;
+    line-height: 2.143em;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.g_b{
+    background-color: #F3F3F3;
+}
+
+.icon-profile::before{
+    content: '\e80e';
 }

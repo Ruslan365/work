@@ -63,7 +63,8 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     preview_pic = models.ImageField(blank=True, upload_to="post_preview_pics")
     author_avatar = models.ImageField(default="default.jpg")
-    title = models.TextField(default="")
+    title = models.CharField(max_length=255)
+    description = models.TextField(default="", max_length=255)
     body = models.TextField(default="")
     created_at = models.DateTimeField(default=timezone.now)
     published_at = models.DateTimeField(auto_now_add=True)
@@ -73,6 +74,7 @@ class Post(models.Model):
     objects = models.Manager()
     tag = models.ManyToManyField(Tag, related_name="tags", blank=True)
     votes = GenericRelation(LikeDislike, related_query_name="posts")
+    post_views = models.IntegerField(default=0)
 
     class Meta:
         ordering = ["-created_at"]

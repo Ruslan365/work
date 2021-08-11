@@ -122,7 +122,7 @@ body{
     width: 1584px;
 }
 
-.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
+.top_panel_controls .pushy_button.sc_button, .top_panel_controls  .search_submit {
     padding: 0;
     font-size: 1.2em;
     width: 2.143em;
@@ -191,9 +191,7 @@ body{
 
 .top_panel_controls .sidebar_pushy, .top_panel_controls .search_wrap {
     display: inline-block;
-    vertical-align: top;
-    margin-left: 5px;
-}
+    vertical-align: top;}
 
 .top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
     padding: 0;
@@ -390,6 +388,10 @@ input[type="submit"]::before, input[type="button"]::before, button::before, .sc_
     content: '\e800';
 }
 
+.sf_with_ul{
+    color: black;
+}
+
 .sf_with_ul.white{
     color: #FFFFFF;
 }
@@ -397,28 +399,17 @@ input[type="submit"]::before, input[type="button"]::before, button::before, .sc_
 .top_panel_controls .sidebar_pushy, .top_panel_controls .search_wrap {
     display: inline-block;
     vertical-align: top;
-    margin-left: 5px;
+
 }
 
-.search_wrap {
-    position: relative;
-    max-width: 10em;
-    min-width: 2.2857em;
-    z-index: 1001;
-}
+
 
 .search_style_fullscreen .search_form {
     padding: 0;
     text-align: center;
 }
 
-.search_wrap form {
-    width: 100%;
-    position: relative;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+
 
 input[type="submit"], input[type="reset"], input[type="button"], button, .sc_button, .sc_button.sc_button_style_filled {
     border: none;
@@ -465,7 +456,7 @@ input[type="submit"]::before, input[type="button"]::before, button::before, .sc_
     margin-right: 0px;
 }
 
-.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_wrap .search_submit {
+.top_panel_controls .pushy_button.sc_button, .top_panel_controls .search_submit {
     font-size: 1.2em;
     line-height: 2.143em;
     text-align: center;
@@ -491,8 +482,12 @@ input[type="submit"], input[type="button"], button, .sc_button {
 
 .icon-search-1::before {
     content: '\e800';
+    color: #8a8d90;
 }
 
+.icon-profile::before{
+    content: '\e80e';
+}
 
 /*.content-wrap{*/
 /*    width: 1040px;*/
@@ -572,7 +567,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 }
 
 .widget_area .post_item .post_thumb {
-    float: left;
+    /*float: left;*/
     width: 4.71em;
     height: 4.71em;
     margin: 0 1em 4px 0;
@@ -622,7 +617,7 @@ a {
 }
 
 .post_thumb{
-    float:left;
+    /*float:left;*/
     margin: 0 14px 4px 0;
 }
 
@@ -703,8 +698,183 @@ figure, .wp_caption_overlay .wp_caption {
 }
 
 .post_preview_image{
-    height:75px;
-    width: 75px;
+    height:65px;
+    width: 65px;
+    margin: 0 1em 4px 0;
+}
+
+.post_title a{
+    color: #2A3342;
+}
+
+.post_title a:hover{
+    color: #1ebeb4;
+}
+
+#sub-menu-list{
+    background-color: #1ebeb4;
+}
+
+.menu_main_nav > li ul li {
+    margin-bottom: 0;
+}
+
+
+.animated.fast {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+}
+
+
+/*.menu_main_nav > li ul {*/
+.sub-menu #sub-menu-list {
+    border-radius: 3px;
+    width: 190px;
+    font-size: 13px;
+    padding: 14px 40px 14px;
+    text-align: left;
+    box-sizing: border-box;
+    list-style-type: none;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.4);
+    right: -190px;
+    top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: absolute;
+    display: block;
+    z-index: 10000;
+    background-color: #1ebeb4;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    visibility: visible;
+}
+
+
+
+
+.menu_main_nav > li ul {
+    width: 190px;
+    font-size: 13px;
+    padding: 14px 40px 14px;
+        text-align: left;
+    box-sizing: border-box;
+    list-style-type: none;
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.4);
+}
+
+/*.menu_main_nav > li ul a {*/
+/*    color: #ffffff;*/
+/*}*/
+
+/*.menu_main > li:hover > a {*/
+/*    background-color: #22cabf;*/
+/*}*/
+
+/*.sub-menu menu-item a{*/
+/*    text-color: black;*/
+/*}*/
+
+/*.menu-item{*/
+/*    color: #FFFFFF ;*/
+/*}*/
+
+
+
+
+
+
+.post_preview_image{
+    float: left;
+}
+
+/*.search_field{*/
+/*    display: none;*/
+/*}*/
+
+
+/* The overlay effect with black background */
+.search_wrap{
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, 0.9); /* Black with a little bit see-through */
+}
+
+/* The content */
+.openBtn{
+    padding-bottom: 0.579em;
+    padding-top: 0.6em;
+    padding-left: 0.82em;
+    padding-right: 0.82em;
+}
+.search_form_wrap {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+/* Close button */
+
+
+.closebtn {
+  position: absolute;
+  top: 400px;
+  right: 450px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
+
+
+
+
+.search_wrap .closebtn:hover {
+  color: #ccc;
+}
+
+/* Style the search field */
+.search_wrap input[type=text] {
+  padding: 15px;
+  font-size: 25px;
+  border: none;
+  float: left;
+  width: 80%;
+  background-color: rgba(0,0,0, 0);
+    color: white;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+}
+
+.search_wrap input[type=text]:hover {
+  background: rgba(0,0,0, 0);
+}
+
+/* Style the submit button */
+.search_wrap button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search_wrap button:hover {
+  background: #bbb;
 }
 
 
@@ -719,35 +889,24 @@ figure, .wp_caption_overlay .wp_caption {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.sub-menu animated fast{
+    border-radius: 3px;
+    width: 190px;
+    font-size: 13px;
+    padding: 14px 40px 14px;
+    text-align: left;
+    box-sizing: border-box;
+    list-style-type: none;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.4);
+    right: -190px;
+    top: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    position: absolute;
+    display: block;
+    z-index: 10000;
+    background-color: #1ebeb4;
+}
 
 
 
@@ -988,7 +1147,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, address {
 }
 
 .footer_wrap .sc_list_style_iconed li {
-    padding: 0 0 0 1.8em;
+    padding: 0   0 0 1.8em;
 }
 
 
@@ -1048,14 +1207,12 @@ a, button {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
 }
-A {
-    color: #8a8d90;
-   }
-A:visited {
-    color: #8a8d90;
-   }
-A:active {
-    color: #8a8d90;
+.menu_main_nav > li > a {
+    color: #2a3342;
+}
+
+.scheme_original .body_type_2 .menu_main_nav > li ul a {
+    color: #ffffff;
 }
 
 A:hover{
@@ -1114,4 +1271,87 @@ A:hover{
 .sidebar .widget_area_inner .widget_nav_menu ul li::before {
     content: '\f111';
     font-size: 1.25em;
+}
+
+.icon-folder menu-item current_menu_ancestor{
+    color: black;
+}
+
+.menu-item-has-children:hover{
+    background-color: #22cabf;
+    border-radius: 3px;
+    /*display: block;*/
+}
+
+.menu-item-has-children{
+    display: block;
+}
+
+.menu_main_nav > li > a:hover {
+    border-radius: 3px;
+}
+
+.sf_with_ul:hover{
+    color: #191315;
+}
+
+/*.menu_main_nav > li:nth-child(n+3) > ul ul {*/
+/*    top: auto;*/
+/*    bottom: 0;*/
+/*}*/
+
+
+.widget_birthdays ul {
+    padding: 0;
+}
+
+.widget_area ul {
+    list-style-type: none;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.widget_birthdays ul li {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.widget_birthdays .post_thumb {
+    width: 38px;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+    /*float: left;*/
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+
+.date {
+    font-size: 0.857em;
+    line-height: 1.75em;
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-left: 3px;
+}
+
+.date {
+    background-color: #1ebeb4;
+    color: white;
+}
+
+.widget_birthdays  {
+    color: #2a3342;
+}
+
+strong {
+    font-weight: bold;
 }

@@ -20,11 +20,13 @@ def profile_redactor(request, id):
         # form = UserForm(request.POST, instance=request.user)
         form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
-            avatar = form.cleaned_data.get("avatar")
-            first_name = request.POST.get("first_name")
-            last_name = request.POST.get("last_name")
-            about = request.POST.get("about")
-            form.save()
+            user.avatar = form.cleaned_data.get("avatar")
+            user.first_name = request.POST.get("first_name")
+            user.last_name = request.POST.get("last_name")
+            user.about = request.POST.get("about")
+            user.facebook_id = request.post.get("facebook_id")
+            user.twitter_id = request.post.get("twitter_id")
+            user.save()
             return redirect(f"http://127.0.0.1:8000/profile/dge{id}du")
         else:
             form = UserForm()

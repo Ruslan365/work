@@ -9,7 +9,8 @@ from posts.models import Post, Comment, LikeDislike
 app_name = "intranet"
 urlpatterns = [
     path("search/", post_views.post_search, name="search_results"),
-    path("", post_views.post_list, name="post_list"),
+    path("", post_views.home_page, name="post_list"),
+    path("list/", post_views.post_list_main, name="post_list"),
     path('post/<int:pk>/', post_views.post_detail, name = 'post_detail'),
     path("", post_views.home_page, name="home_page"),
     path('comment/<int:pk>/', post_views.comment_page, name="comment_page"),

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+from datetime import timedelta, date
 from posts.models import Post, Comment, LikeDislike
 from posts.forms import CommentForm, PostForm, SearchForm
 from users.models import User
@@ -12,23 +12,49 @@ from django.http import HttpResponse
 from django.views import View
 from django.contrib.contenttypes.models import ContentType
 from polls.forms import PollAddForm
+from django.db.models import Q
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
-def post_list(request):
+def post_list_main(request):
+    today = date.today()
+    fifteen_days = today + timedelta(days=15)
+    if today.month == fifteen_days.month:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
+        )
+    else:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=fifteen_days.day) |
+            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+        )
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     return render(
         request,
-        "intranet/home/post/list.html",
+        "intranet/home/post/post_list.html",
         {
             "recent_posts": recent_posts,
+            "birthdays": queryset,
         },
     )
 
 
+
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def post_detail(request, pk):
+    today = date.today()
+    fifteen_days = today + timedelta(days=15)
+    if today.month == fifteen_days.month:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
+        )
+    else:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=fifteen_days.day) |
+            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+        )
     post =  Post.objects.get(pk=pk)
-    # post.views_counter += 1
+    post.post_views += 1
+    post.save()
     comments = Comment.objects.filter(post=post, active=True, reply=None)
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     tags = post.tag.all()
@@ -55,6 +81,7 @@ def post_detail(request, pk):
             "form": comment_form,
             "tags": tags,
             "recent_posts": recent_posts,
+            "birthdays": queryset,
         },
     )
 
@@ -79,16 +106,27 @@ def tag_page(request, tag):
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def home_page(request):
-    user = User.objects.get(email=request.email)
-    recent_posts = Post.objects.get(is_published=1)[:5:]
-    online_users = User.objects.is_online.all[:5:]
-    return render(request, "intranet/home/home_page.html", {"user": user, "recent_posts":recent_posts, "users_online":online_users,})
+    today = date.today()
+    fifteen_days = today + timedelta(days=15)
+    if today.month == fifteen_days.month:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
+        )
+    else:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=fifteen_days.day) |
+            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+        )
+    user = User.objects.get(id=request.user.id)
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
+    return render(request, "intranet/home/home_page.html", {"user": user, "recent_posts":recent_posts, "birthdays":queryset, })
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def post_creator(request, id):
     user = request.user
     new_post = None
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
     if request.method == "POST":
         post_form = PostForm(data=request.POST)
         if post_form.is_valid():
@@ -117,6 +155,7 @@ def post_creator(request, id):
         {
             "user": user,
             "post_form": post_form,
+            "recent_posts":recent_posts,
             # "email": email,
         },
     )
@@ -126,41 +165,98 @@ def post_creator(request, id):
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def profile_page(request, id):
+    today = date.today()
+    fifteen_days = today + timedelta(days=15)
+    if today.month == fifteen_days.month:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
+        )
+    else:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=fifteen_days.day) |
+            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+        )
+    new_post = None
     user = get_object_or_404(User, id=id)
     user_posts = Post.objects.filter(author__id=id)
-    # social_networks = dict(user.social_network.values("social_network_name", "social_network_link"))
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
+    if request.method == "POST":
+        post_form = PostForm(data=request.POST)
+        if post_form.is_valid():
+            preview_img = post_form.cleaned_data.get("preview_pic")
+            title = request.POST.get("title")
+            body = request.POST.get("body")
+            tag = request.POST.get("tag")
+            new_post = Post.objects.create(
+                author=request.user,
+                title=title,
+                body=body,
+                is_published=1,
+                slug=title,
+            )
+            new_post.save()
+            if tag:
+                for t in tag.iterator():
+                    new_post.tag.add(t)
+            return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du")
+    else:
+        post_form = PostForm()
     return render(
         request,
         "intranet/user/profile.html",
         {
             "user": user,
             # "social_networks": social_networks,
-            "posts": user_posts,
+            "user_posts": user_posts,
+            "post_form": post_form,
+            "recent_posts": recent_posts,
+            "birthdays": queryset,
         },
     )
 
 
 def post_search(request):
+    today = date.today()
+    fifteen_days = today + timedelta(days=15)
+    if today.month == fifteen_days.month:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
+        )
+    else:
+        queryset = User.objects.filter(
+            Q(birth_date__month=today.month, birth_date__day__gte=fifteen_days.day) |
+            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+        )
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
+
     form = SearchForm()
     client = Elasticsearch()
     if "query" in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
             search_query = form.cleaned_data["query"]
-            q = MultiMatch(query=search_query, fields=["title", "body", "description"], fuzziness="AUTO")
-            s = Search(using=client, index="posts").query(q)
-            response = s.execute()
-            ids=[]
-            all_posts=[]
-            for hit in response:
+            q_posts = MultiMatch(query=search_query, fields=["title", "body", "description"], fuzziness="AUTO")
+            q_users = MultiMatch(query=search_query, fields=["first_name", "last_name", "email"], fuzziness="AUTO")
+            s_posts = Search(using=client, index="posts").query(q_posts)
+            s_users = Search(using=client, index="users").query(q_users)
+            response_posts = s_posts.execute()
+            response_users = s_users.execute()
+            all_posts = []
+            all_users = []
+            for hit in response_posts.hits:
                 all_posts.append(Post.objects.get(id=hit.id))
+            for hit in response_users.hits:
+                all_users.append(User.objects.get(id=hit.id))
             return render(
                 request,
                 "intranet/home/search_page.html",
                 {
                     "form": form,
                     "query": search_query,
-                    "results": all_posts,
+                    "results_posts": all_posts[:5:],
+                    "results_users": all_users[:5:],
+                    "birthdays":queryset,
+                    "recent_posts":recent_posts,
                 },
             )
 

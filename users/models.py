@@ -1,5 +1,6 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.db import models
+from datetime import datetime
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import BaseUserManager
 # from imagekit.processors import ResizeToFit, Adjust, ResizeToFill
@@ -40,6 +41,9 @@ class UserManager(BaseUserManager):
         if self.last_login_at:
             return (timezone.now() - self.last_login_at) < timezone.timedelta(minutes=15)
         return False
+    #
+    # def upcoming_birthday(self):
+    #     if self.birth_date
 
 
 
@@ -55,31 +59,22 @@ class User(AbstractBaseUser, PermissionsMixin):  # abstract user только п
     created_at = models.DateTimeField(auto_now_add=True)
     last_login_at = models.DateTimeField(blank=True, null=True)
     objects = UserManager()
-    birth_date = models.DateTimeField(blank=True, null=True)
+    birth_date = models.DateField(blank=True, null=True)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     is_staff = models.BooleanField("staff status", default=False)
     is_active = models.BooleanField(default=True)
     about = models.TextField(blank=True)
-    # org_level = models.ForeignKey(Role, default="", related_name="o_level", on_delete=models.CASCADE)
-
+    twitter_id = models.CharField('https://twitter.com/',max_length=255, blank=True, null=True)
+    facebook_id = models.CharField('https://facebook/public/',max_length=255, blank=True, null=True)
     def is_online(self):
         if self.last_login_at:
             return (timezone.now() - self.last_login_at) < timezone.timedelta(minutes=10)
         return False
 
-
-    # Если пользователь посещал сайт не более 15 минут назад,
-    def get_online_info(self):
-        if self.is_online():
-            # то возвращаем информацию, что он онлайн
-            return 'Online'
-        if self.last_login_at:
-            # иначе пишем сообщение о последнем посещении
-            return 'Last visit {}'.format(naturaltime(self.last_login_at))
-            # Если вы только недавно добавили информацию о посещении пользователем сайта
-            # то для некоторых пользователей инфомации о посещении может и не быть, вернём информацию, что последнее посещение неизвестно
-        return 'Unknown'
+    @property
+    def age(self):
+        return int((datetime.now().date().year - self.birth_date.year))+1
 
 
     @property
