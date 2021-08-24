@@ -23,13 +23,13 @@
                         <td>Deadline</td>
                         <td>Salary</td>
                     </tr>
-                {% for foo in www %}
+                {% for dude in people %}
 
                         <tr>
-                            <td class="position"><a><span class="post_position">{{foo.Position}}</span></a></td>
-                            <td class="location"><a>{{foo.Location}}</a></td>
-                            <td class="employment"><a><span class = {{ foo.Deadline }}>{{ foo.get_Deadline_display }}</span></a></td>
-                            <td class="salary"><a>{{ foo.Salary }}</a></td>
+                            <td class="position"><a><span class="post_position">{{dude.Position}}</span></a></td>
+                            <td class="location"><a>{{dude.Location}}</a></td>
+                            <td class="employment"><a><span class = {{ dude.Deadline }}>{{ dude.get_Deadline_display }}</span></a></td>
+                            <td class="salary"><a>{{ dude.Salary }}</a></td>
                         </tr>
 
                 {% endfor %}
