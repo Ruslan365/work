@@ -4,6 +4,7 @@ from users.models import User
 
 CHOICES = (('full', 'Full Time'), ('part', 'Part Time'), ('freelance', 'Freelance'))
 
+
 class Work(models.Model):
     Position = models.CharField(max_length=30, blank=True)
     Location = models.CharField(max_length=30, blank=True)

@@ -1,4 +1,4 @@
-.ivc_char{
+.ivc_char {
     padding-bottom: 30px;
     width: 20vh;
     height: 50vh;
@@ -9,9 +9,11 @@
     margin: 1em;
     display: inline-block;
 }
-.sc_team_item{
+
+.sc_team_item {
     text-align: center;
 }
+
 .name {
     color: #2a3342;
 
@@ -19,29 +21,35 @@
     margin-bottom: 1px;
 
 }
+
 @media (max-width: 420px) {
 
-    .picture{
+    .picture {
         height: 200px !important;
 
     }
-    .ivc_char{
+
+    .ivc_char {
         width: 100%;
     }
 }
-.picture{
-    height:150px;
+
+.picture {
+    height: 150px;
     width: 100%
 }
-.content_wrap{
+
+.content_wrap {
     background-color: #f7f7f7;
 }
-.page_title{
+
+.page_title {
     text-align: center;
     font-size: 2em;
     margin-bottom: 20px;
 }
-.member_text{
+
+.member_text {
     word-break: break-all;
     color: #8a8d90;
     padding-top: 1.65em;

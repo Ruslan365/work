@@ -1,36 +1,40 @@
+{#{% extends 'intranet/home/home_page.html' %}#}
+
 {% block content %}
-<div>
     <div>
         <div>
-            <h2>Edit poll</h2>
-
-            <form action="" method="POST">
-                {% csrf_token %}
-                {% for field in form %}
-                <div class="form-group">
-
-                    {{ field.label_tag }}
-                    {{ field }}
-                </div>
-                {% endfor %}
-                <button type="submit" >Update</button>
-                <a href="{% url 'polls:delete_poll' poll.id %}" role="button" onclick="return confirm('Are you sure?')">Delete</a>
-                <a href="{% url 'polls:add_choice' poll.id %}" role="button">Add Choice</a>
-            </form>
-
             <div>
-                <a href = {% url 'polls:end_poll' poll.id%}>End poll</a>
-                <h2>Choices</h2>
-                <hr>
-                <ul class>
-                    {% for choice in poll.choice_set.all %}
-                    <li ><a href="{% url 'polls:choice_edit' choice.id %}">Edit choice</a><a href="{% url 'polls:choice_delete' choice.id %}">Delete choice</a>
-                        {{ choice.choice_text }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
+                <h2>Edit poll</h2>
 
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit">Update</button>
+                    <a href="{% url 'polls:delete_poll' poll.id %}" role="button"
+                       onclick="return confirm('Are you sure?')">Delete</a>
+                    <a href="{% url 'polls:add_choice' poll.id %}" role="button">Add Choice</a>
+                </form>
+
+                <div>
+                    <a href= {% url 'polls:end_poll' poll.id %}>End poll</a>
+                    <h2>Choices</h2>
+                    <hr>
+                    <ul class>
+                        {% for choice in poll.choice_set.all %}
+                            <li><a href="{% url 'polls:choice_edit' choice.id %}">Edit choice</a><a
+                                    href="{% url 'polls:choice_delete' choice.id %}">Delete choice</a>
+                                {{ choice.choice_text }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

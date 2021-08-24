@@ -1,21 +1,23 @@
 {% extends 'intranet/home/home_page.html' %}
-    <link rel="stylesheet" type="text/css" href ="{% static 'css/vacancies.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/vacancies.css' %}">
+
 {% block content %}
     {% for post in posts %}
+
         <h2>
             {{ post.title }}
         </h2>
-    <p class="date">
+        <p class="date">
             Published by {{ post.author.email }}
         <p>
-            On  {{ post.published_at }}
+            On {{ post.published_at }}
         </p>
         <p>{{ post.description|safe }}</p>
-            <p>
-    {% for tag in post.tag.all %}
-        <a href = "http://127.0.0.1:8000/tag={{tag.name}}">{{tag.name}}</a>
-    {% endfor %}</p>
-        <p><a href="{{ post.get_absolute_url }}" id = 'post_link'>See more...</a></p>
-    </p>
+        <p>
+            {% for tag in post.tag.all %}
+                <a href="http://127.0.0.1:8000/tag={{ tag.name }}">{{ tag.name }}</a>
+            {% endfor %}</p>
+        <p><a href="{{ post.get_absolute_url }}" id='post_link'>See more...</a></p>
+        </p>
     {% endfor %}
 {% endblock %}

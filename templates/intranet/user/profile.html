@@ -2,144 +2,159 @@
 <html>
 {% load static %}
 {% load markdown_extras %}
-            {% block content %}
-            <div class="content_wrap_with_title">
-            <div class = 'title-block' style = 'padding-top: 40px;'><span style = "padding-left: 56.69px">Profile</span></div>
-                <link rel="stylesheet" type="text/css" href = "{% static 'css/profilePage.css' %}">
-                  <section class="post_author author vcard">
-                     <div class="post_author_avatar">
-                        <a href="single-team.html">
-                            <img src="{{user.avatar.url}}" class="avatar-80" alt="" width="125" height="125">
-                        </a>
-                     </div>
-                      <div class="user-info">
-                     <h6 class="post_author_title">About
+{% block content %}
+    <div class="content_wrap_with_title">
+        <div class='title-block' style='padding-top: 40px;'><span style="padding-left: 56.69px">Profile</span></div>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/profilePage.css' %}">
+        <section class="post_author author vcard">
+            <div class="post_author_avatar">
+                <a href="single-team.html">
+                    <img src="{{ user.avatar.url }}" class="avatar-80" alt="" width="125" height="125">
+                </a>
+            </div>
+            <div class="user-info">
+                <h6 class="post_author_title">About
 
-                         <span>
-                             <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/" class="fn">{{user.first_name}} {{ user.last_name }}</a>
+                    <span>
+                             <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/"
+                                class="fn">{{ user.first_name }} {{ user.last_name }}</a>
                          </span>
-                     </h6>
-                      <h6>Email: {{ user.email }}</h6>
-                      <h6>
-                          Joined us at: {{ user.created_at }}
-                      </h6>
-                      <h6>
-                          Last seen at: {{ user.last_login_at }}
-                      </h6>
-                     <div class="post_author_info">
-                         {{ user.about}}
-                     </div>
-                      {% if user.twitter_id or user.facebook_id %}
-                          <div class="post_info post_info_bottom post_info_share post_info_share_horizontal">
-                            <div class="sc_socials sc_socials_size_small sc_socials_share sc_socials_dir_horizontal inited">
-                                <span class="share_caption">Find me on social media:</span>
-                                {% if user.twitter_id %}
-                                     <div class="sc_socials_item social_item_popup">
-                                        <a href="https://twitter.com/{{ user.twitter_id }}/"
-                                         onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
-                                        target="_blank" rel="nofollow">
-                                        <img src="../../../../media/social_media/twitter.png">
-                                        </a>
-                                        </div>
-                                {% endif %}
-                                {% if user.facebook_id %}
-                                <div class="sc_socials_item social_item_popup">
-                                   <a href="https://www.facebook.com/public/{{ user.facebook_id }}/"
-                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                </h6>
+                <h6>Email: {{ user.email }}</h6>
+                <h6>
+                    Joined us at: {{ user.created_at }}
+                </h6>
+                <h6>
+                    Last seen at: {{ user.last_login_at }}
+                </h6>
+                <div class="post_author_info">
+                    {{ user.about }}
+                </div>
+                {% if user.twitter_id or user.facebook_id %}
+                    <div class="post_info post_info_bottom post_info_share post_info_share_horizontal">
+                    <div class="sc_socials sc_socials_size_small sc_socials_share sc_socials_dir_horizontal inited">
+                        <span class="share_caption">Find me on social media:</span>
+                        {% if user.twitter_id %}
+                            <div class="sc_socials_item social_item_popup">
+                                <a href="https://twitter.com/{{ user.twitter_id }}/"
+                                   onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <img src="../../../../media/social_media/twitter.png">
+                                </a>
+                            </div>
+                        {% endif %}
+                        {% if user.facebook_id %}
+                            <div class="sc_socials_item social_item_popup">
+                                <a href="https://www.facebook.com/public/{{ user.facebook_id }}/"
+                                   onclick="window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
                                    target="_blank" rel="nofollow">
                                     <img src="../../../../media/social_media/facebook.png">
-                                    </a>
-                                        <span class="sc_socials_hover"></span>
-                                   </a>
-                               </div>
-                            {% endif %}
+                                </a>
+                                <span class="sc_socials_hover"></span>
+                                </a>
                             </div>
-                          {% endif %}
-                      </div>
-                  </section>
-                 {% if request.user == user %}
-                     <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/" class="sc_button sc_button_square sc_button_style_filled sc_button_size_small post-button">Edit Profile</a>
-                <a  class="sc_button sc_button_square sc_button_style_filled sc_button_size_small post-button" onclick="showForm()" id = 'show-post-button'>Create Post</a>
-            {% else %}
-        {% endif %}
-                <div class = 'form-wrapper'>
-                <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post" id = "post-form">
-                    {{ post_form.as_p|safe}}
-                    {% csrf_token %}
-                    <a><input type="submit" value="Close" onclick = "hideForm()"></a>
-                    <input type="submit" value="Create" onclick = "hideForm()">
-                    </form>
-                   <div class = 'title-block' ><span style = "padding-left: 70.69px; padding-bottom: 20px;">Posts</span></div>
+                        {% endif %}
+                    </div>
+                {% endif %}
                 </div>
-                {% for post in user_posts %}
-                  <article class="post_item post_item_excerpt post_format_standard post hentry" style = "border-color:#f1f1f1">
-                     <section class="post_featured">
-                     {% if post.preview_pic %}
-                        <div class="post_thumb" data-image="images/blog_1.jpg" data-title="Analytics: Etiam in finibus felis amet.">
-                                <img alt="" src="{{ post.preview_pic.url }}">
+        </section>
+        {% if request.user == user %}
+            <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/"
+               class="sc_button sc_button_square sc_button_style_filled sc_button_size_small post-button">Edit
+                Profile</a>
+            <a class="sc_button sc_button_square sc_button_style_filled sc_button_size_small post-button"
+               onclick="showForm()" id='show-post-button'>Create Post</a>
+        {% else %}
+        {% endif %}
+        <div class='form-wrapper'>
+            <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post" id="post-form">
+                {{ post_form.as_p|safe }}
+                {% csrf_token %}
+                <a><input type="submit" value="Close" onclick="hideForm()"></a>
+                <input type="submit" value="Create" onclick="hideForm()">
+            </form>
+            <div class='title-block'><span style="padding-left: 70.69px; padding-bottom: 20px;">Posts</span></div>
+        </div>
+        {% for post in user_posts %}
+            <article class="post_item post_item_excerpt post_format_standard post hentry" style="border-color:#f1f1f1">
+                <section class="post_featured">
+                    {% if post.preview_pic %}
+                        <div class="post_thumb" data-image="images/blog_1.jpg"
+                             data-title="Analytics: Etiam in finibus felis amet.">
+                            <img alt="" src="{{ post.preview_pic.url }}">
                         </div>
-                         {% else %}
-                         {% endif %}
-                     </section>
-                     <section class="post_content clearfix">
-                     <h3 class = "post_title">
-                     <a href="http://127.0.0.1:8000/post/{{ post.id }}">
-                           <span class="post_icon icon-book-open"></span>{{ post.title|safe }}
-                           </a>
-                     </h3>
-                      <div class="post_info">
+                    {% else %}
+                    {% endif %}
+                </section>
+                <section class="post_content clearfix">
+                    <h3 class="post_title">
+                        <a href="http://127.0.0.1:8000/post/{{ post.id }}">
+                            <span class="post_icon icon-book-open"></span>{{ post.title|safe }}
+                        </a>
+                    </h3>
+                    <div class="post_info">
                            <span class="post_info_item post_info_posted">
-                               <a href="single-post.html" class="post_info_date updated" content="2016-08-24 14:27:14">{{ post.get_date}}</a>
+                               <a href="single-post.html" class="post_info_date updated"
+                                  content="2016-08-24 14:27:14">{{ post.get_date }}</a>
                            </span>
-                            <span class="post_info_item post_info_posted_by vcard"> by
-                                <a href="single-team.html" class="post_info_author">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+                        <span class="post_info_item post_info_posted_by vcard"> by
+                                <a href="single-team.html"
+                                   class="post_info_author">{{ post.author.first_name }} {{ post.author.last_name }}</a>
                             </span>
-                           <span class="post_info_item post_info_tags">in
-                               {% for tag in tags %}
-                                   <a href = "http://127.0.0.1:8000/tag={{tag.name}}" class="category_link">{{tag.name}}</a>
-                               {% endfor %}
+                        <span class="post_info_item post_info_tags">in
+                            {% for tag in tags %}
+                                <a href="http://127.0.0.1:8000/tag={{ tag.name }}"
+                                   class="category_link">{{ tag.name }}</a>
+                            {% endfor %}
                            </span>
-                           <span class="post_info_item post_info_counters">
+                        <span class="post_info_item post_info_counters">
                                <span class="post_counters_item post_counters_views icon-eye-1" title="Views - 314">
                                    <span class="post_counters_number">{{ post.post_views }}</span>
                                </span>
-                                   <a data-id="{{ post.pk }}" data-type="post" data-action="like" title="Нравится" id = 'like-btn' class="post_counters_item post_counters_likes icon-heart enabled inited" title="Like" href="#" data-postid="375" data-likes="4" data-title-like="Like" data-title-dislike="Dislike">
-                                       <span class="post_counters_number" data-count="like">{{ post.votes.likes.count }}</span>
+                                   <a data-id="{{ post.pk }}" data-type="post" data-action="like" title="Нравится"
+                                      id='like-btn'
+                                      class="post_counters_item post_counters_likes icon-heart enabled inited"
+                                      title="Like" href="#" data-postid="375" data-likes="4" data-title-like="Like"
+                                      data-title-dislike="Dislike">
+                                       <span class="post_counters_number"
+                                             data-count="like">{{ post.votes.likes.count }}</span>
                                    </a>
 
-                               <a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3" href="#comments">
+                               <a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3"
+                                  href="#comments">
                                    <span class="post_counters_number">{{ post.comments.count }}
                                    </span>
                                </a>
                            </span>
-                        </div>
-                        <div class="vc_row wpb_row vc_row-fluid">
-                           <div class="wpb_column vc_column_container vc_col-sm-12">
-                              <div class="vc_column-inner">
-                                 <div class="wpb_wrapper">
+                    </div>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
                                     <div class="wpb_text_column wpb_content_element">
-                                       <div class="wpb_wrapper">
-                                          <p>
-                                              {{ post.body | truncatechars:255| safe }}
-                                          </p>
-                                       </div>
+                                        <div class="wpb_wrapper">
+                                            <p>
+                                                {{ post.body | truncatechars:255| safe }}
+                                            </p>
+                                        </div>
                                     </div>
-                                 </div>
-                              </div>
-                           </div>
+                                </div>
+                            </div>
                         </div>
-                        <a href="http://127.0.0.1:8000/post/{{ post.id }}/" class="sc_button sc_button_square sc_button_style_filled sc_button_size_small">Read more</a>
-                     </section>
+                    </div>
+                    <a href="http://127.0.0.1:8000/post/{{ post.id }}/"
+                       class="sc_button sc_button_square sc_button_style_filled sc_button_size_small">Read more</a>
+                </section>
 
-                     <section class="related_wrap related_wrap_empty"></section>
-                  </article>
-                {% endfor %}
-            </div>
-                <script src="{% static 'js/test2.js' %}" type="text/javascript"></script>
-        <script src = "{% static 'js/test.js' %}" type="text/javascript"></script>
-        <script src="{% static 'js/profilePage.js' %}" type="text/javascript"></script>
+                <section class="related_wrap related_wrap_empty"></section>
+            </article>
+        {% endfor %}
+    </div>
+    <script src="{% static 'js/test2.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/test.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/profilePage.js' %}" type="text/javascript"></script>
 
-           {% endblock content %}
+{% endblock content %}
 
 </body>
 

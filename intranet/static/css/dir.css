@@ -1,6 +1,7 @@
-.content_wrap{
+.content_wrap {
     background-color: white;
 }
+
 .dir_box {
     padding: 1.857em;
     background-color: #f7f7f7;
@@ -9,39 +10,50 @@
     height: 443px;
     display: table-cell;
 }
+
 .input [type="submit"] {
     background-color: #2a3342;
-    width:200px;
+    width: 200px;
     color: white;
     min-width: 25em;
     min-height: 3.5em;
 }
-.beautiful_color{
+
+.beautiful_color {
     color: #1ebeb4;
     font-size: 40px;
     margin-top: 1.7em;
 }
-.dir_box_inner{
+
+.dir_box_inner {
     text-align: center;
     margin-top: 40px;
 }
-.ui-autocomplete-input{
+
+.ui-autocomplete-input {
     min-height: 4em;
     min-width: 25em;
 }
-#room{
+
+#room {
     min-width: 26.5em;
 }
-#tags{min-width: 25em}
-#partydate{
+
+#tags {
+    min-width: 25em
+}
+
+#partydate {
     min-width: 25em;
 }
-.frame{
+
+.frame {
     transition: all 0.2s;
 }
+
 @media (max-width: 400px) {
 
-    .frame{
+    .frame {
         width: 400px
     }
 

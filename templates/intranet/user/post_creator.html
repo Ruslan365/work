@@ -1,18 +1,21 @@
 {% extends "intranet/user/profile.html" %}
 {% load static %}
-        <link rel="stylesheet" type="text/css" href = "{% static 'css/post_creator.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/postCreator.css' %}">
+
 {% block content %}
-    <span class = 'action'>Add a new post</span>
-    <div class = 'form-wrapper'>
-  <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post">
-      {{ post_form.preview_pic }}
-      <p class = 'post_title'>
-      {{ post_form.title |safe }}
-      </p>
-          {{ post_form.body }}
-    {% csrf_token %}
-      <p><input type="submit" value="Add post"></p>
-  </form>
+    <span class='action'>Add a new post</span>
+    <div class='form-wrapper'>
+        <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post">
+            {#    {{ post_form.as_p|safe}}#}
+            {{ post_form.preview_pic }}
+            <p class='post_title'>
+                {{ post_form.title |safe }}
+            </p>
+            {{ post_form.body }}
+            {% csrf_token %}
+            <p><input type="submit" value="Add post"></p>
+        </form>
     </div>
-    <a href = "{% url 'intranet:user_profile' user.id %}">Back</a>
+    <a href="{% url 'intranet:user_profile' user.id %}">Back</a>
 {% endblock %}
