@@ -1,0 +1,20 @@
+{% block content %}
+            <a href="{% url 'polls:add' %}" role="button">Add </a>
+            <ul>
+                {% for poll in polls %}
+                <li><a href="{% url 'polls:detail' poll.id %}">{{ poll.text|truncatewords:5 }}
+                        {% if not poll.active%}
+                        {% endif %}
+                    </a>
+                    {% if request.user == poll.owner %}
+                    {% if poll.active %}
+                    <a href="{% url 'polls:end_poll' poll.id %}" data-toggle="tooltip" data-placement="top" title="End Poll"
+                        onclick="return confirm('Are you sure ?')"></a>
+                    {% endif %}
+                    <a href="{% url 'polls:edit' poll.id %}" data-toggle="tooltip" data-placement="top"
+                        title="Edit Poll"></a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+{% endblock content %}

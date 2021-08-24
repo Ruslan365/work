@@ -1,0 +1,21 @@
+{% extends 'intranet/home/home_page.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href ="{% static 'css/members.css' %}">
+    <div class="page_title">MEMBERS</div>
+    {% for us in users.choices.all %}
+        <div class="ivc_char">
+            <div class="picture">
+            <p><img src="{{ us.avatar.url }}"class="picture"></p>
+                </div>
+            <div class="sc_team_item">
+            <h3 class="name"> {{ us.first_name }}
+                {{ us.last_name }}
+            </h3>
+            <p class="member_text member_role">
+                {{ us.role }}
+            </p>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}
