@@ -127,8 +127,8 @@
                            <ul>
                                {% for user in birthdays %}
                               <li>
-                                 <div class="post_thumb_bday">
-                                    <img src={{ user.avatar.url }}  alt="" width="38" height="38" style = "border-radius: 50%;">
+                                 <div class="post_thumb_bday" style="width: 40px; height: 40px;">
+                                    <img src={{ user.avatar.url }}  alt="" width="40" height="40" style = "border-radius: 50%;">
                                  </div>
                                  <div class="post_title" style = "margin-left: 54px;margin-top: -30px;">
                                      <a href = "http://127.0.0.1:8000/profile/dge{{ user.id }}du"><strong>{{ user.first_name }} {{ user.last_name}}</strong></a>

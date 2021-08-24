@@ -1,15 +1,17 @@
 from __future__ import print_function
-
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
-from django.urls import reverse
-
-from calls.start import event_creator
 from django.shortcuts import render
+from django.urls import reverse
+from calls.start import event_creator
 from users.models import User
+from posts.models import Post
+
 
 @login_required
 def search_call(request):
+    queryset = User.objects.birthdays()
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
     if not request.user.is_superuser:
         return HttpResponseRedirect(reverse('intranet:home_page'))
 
@@ -22,7 +24,7 @@ def search_call(request):
         partydate = request.GET.get('partydate')
         room = request.GET.get('room')
         query = query_row.split(', ')
-        del query[len(query)-1]
+        del query[len(query) - 1]
         for x in query:
             emails_buf = dict(email='')
             emails_dict.append(emails_buf)
@@ -39,5 +41,7 @@ def search_call(request):
         "../templates/intranet/home/dir.html",
         {
             "user_emails": emails,
+            "birthdays": queryset,
+            "recent_posts": recent_posts
         },
     )

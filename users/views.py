@@ -1,9 +1,9 @@
-from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import User, Role
-from .forms import UserForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
+from .forms import UserForm
+from .models import User, Role
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")

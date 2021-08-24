@@ -8,8 +8,6 @@ from posts.models import Post, Comment, LikeDislike
 app_name = "intranet"
 urlpatterns = [
     path("search/", post_views.post_search, name="search_results"),
-#    path("", post_views.post_list_main, name="post_list"),
-
     path("dir/", calls_views.search_call, name="dir"),
     path("list/", post_views.post_list_main, name="post_list"),
     path('post/<int:pk>/', post_views.post_detail, name = 'post_detail'),

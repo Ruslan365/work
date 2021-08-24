@@ -1,9 +1,10 @@
-from django.contrib.auth.base_user import AbstractBaseUser
-from django.db import models
 from datetime import datetime
-from django.contrib.auth.models import PermissionsMixin
-from django.contrib.auth.base_user import BaseUserManager
 from datetime import timedelta, date
+
+from django.contrib.auth.base_user import AbstractBaseUser
+from django.contrib.auth.base_user import BaseUserManager
+from django.contrib.auth.models import PermissionsMixin
+from django.db import models
 from django.db.models import Q
 
 
@@ -40,14 +41,14 @@ class UserManager(BaseUserManager):
         fifteen_days = today + timedelta(days=15)
         if today.month == fifteen_days.month:
             return super().get_queryset().filter(
-            Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(birth_date__day__lte=fifteen_days.day)
-        )
+                Q(birth_date__month=today.month, birth_date__day__gte=today.day) & Q(
+                    birth_date__day__lte=fifteen_days.day)
+            )
         else:
             return super().get_queryset().filter(
-            Q(birth_date__month=today.month, birth_date__day__gte=today.day) |
-            Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
-        )
-
+                Q(birth_date__month=today.month, birth_date__day__gte=today.day) |
+                Q(birth_date__month=fifteen_days.month, birth_date__day__lte=fifteen_days.day)
+            )
 
 
 class User(AbstractBaseUser, PermissionsMixin):  # abstract user только почта и пароль
@@ -69,8 +70,9 @@ class User(AbstractBaseUser, PermissionsMixin):  # abstract user только п
     is_staff = models.BooleanField("staff status", default=False)
     is_active = models.BooleanField(default=True)
     about = models.TextField(blank=True)
-    twitter_id = models.CharField('https://twitter.com/',max_length=255, blank=True, null=True)
-    facebook_id = models.CharField('https://facebook/public/',max_length=255, blank=True, null=True)
+    twitter_id = models.CharField('https://twitter.com/', max_length=255, blank=True, null=True)
+    facebook_id = models.CharField('https://facebook/public/', max_length=255, blank=True, null=True)
+
     # def is_online(self):
     #     if self.last_login_at:
     #         return (timezone.now() - self.last_login_at) < timezone.timedelta(minutes=10)
@@ -78,8 +80,7 @@ class User(AbstractBaseUser, PermissionsMixin):  # abstract user только п
 
     @property
     def age(self):
-        return int((datetime.now().date().year - self.birth_date.year))+1
-
+        return int((datetime.now().date().year - self.birth_date.year)) + 1
 
     @property
     def get_email(self):
@@ -101,7 +102,6 @@ class Role(models.Model):
 
 
 class SocialNetwork(models.Model):
-
     user = models.ForeignKey(User, default="", related_name="social_network", on_delete=models.CASCADE)
     social_network_name = models.TextField(max_length=32, blank=True)
     social_network_link = models.TextField(max_length=128)

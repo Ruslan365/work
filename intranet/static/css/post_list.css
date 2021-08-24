@@ -686,7 +686,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, nav, sectio
 
 img {
     max-width: 100%;
-    height: auto;
     vertical-align: top;
 }
 

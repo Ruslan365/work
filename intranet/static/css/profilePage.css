@@ -35,7 +35,11 @@
     color: #FFFFFF;
 }
 
-.top_panel_controls .sidebar_pushy, .top_panel_controls  {
+.top_panel_controls  {
+    vertical-align: top;
+}
+
+.top_panel_controls .sidebar_pushy {
     display: inline-block;
     vertical-align: top;
 }
@@ -234,7 +238,6 @@ a {
 
 img {
     max-width: 100%;
-    height: auto;
     vertical-align: top;
 }
 
@@ -1218,7 +1221,6 @@ h3 a {
 
 img {
     max-width: 100%;
-    height: auto;
     vertical-align: top;
 }
 

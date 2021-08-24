@@ -56,6 +56,9 @@ h5{
     font-weight: 700;
 }
 
+/*.post_thumb_bday{}*/
+
+
 .scheme_original.footer_wrap .sc_list_style_iconed li::before, .scheme_original.footer_wrap .sc_list_style_iconed .sc_list_icon {
     color: #191315;
 }
@@ -208,7 +211,6 @@ body{
 }
 img {
     max-width: 100%;
-    height: auto;
     vertical-align: top;
     margin: 0;
 }
