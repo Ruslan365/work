@@ -108,7 +108,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            "intranet:post_detail",
+            "accounts:post_detail",
             args=[self.published_at.year, self.published_at.month, self.published_at.day, self.slug],
         )
 

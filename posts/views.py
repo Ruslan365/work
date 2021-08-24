@@ -13,7 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
-def post_list_main(request):
+def post_list(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     return render(
@@ -130,46 +130,7 @@ def post_creator(request, id):
 
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
-def profile_page(request, id):
-    queryset = User.objects.birthdays()
-    new_post = None
-    user = get_object_or_404(User, id=id)
-    user_posts = Post.objects.filter(author__id=id)
-    recent_posts = Post.objects.filter(is_published=1)[:5:]
-    if request.method == "POST":
-        post_form = PostForm(data=request.POST)
-        if post_form.is_valid():
-            preview_img = post_form.cleaned_data.get("preview_pic")
-            title = request.POST.get("title")
-            body = request.POST.get("body")
-            tag = request.POST.get("tag")
-            new_post = Post.objects.create(
-                author=request.user,
-                title=title,
-                body=body,
-                is_published=1,
-                slug=title,
-            )
-            new_post.save()
-            if tag:
-                for t in tag.iterator():
-                    new_post.tag.add(t)
-            return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du")
-    else:
-        post_form = PostForm()
-    return render(
-        request,
-        "intranet/user/profile.html",
-        {
-            "user": user,
-            # "social_networks": social_networks,
-            "user_posts": user_posts,
-            "post_form": post_form,
-            "recent_posts": recent_posts,
-            "birthdays": queryset,
-        },
-    )
+
 
 
 def post_search(request):

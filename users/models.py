@@ -73,10 +73,6 @@ class User(AbstractBaseUser, PermissionsMixin):  # abstract user только п
     twitter_id = models.CharField('https://twitter.com/', max_length=255, blank=True, null=True)
     facebook_id = models.CharField('https://facebook/public/', max_length=255, blank=True, null=True)
 
-    # def is_online(self):
-    #     if self.last_login_at:
-    #         return (timezone.now() - self.last_login_at) < timezone.timedelta(minutes=10)
-    #     return False
 
     @property
     def age(self):

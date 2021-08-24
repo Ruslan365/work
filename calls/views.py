@@ -13,7 +13,7 @@ def search_call(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     if not request.user.is_superuser:
-        return HttpResponseRedirect(reverse('intranet:home_page'))
+        return HttpResponseRedirect(reverse('accounts:home_page'))
 
     if 'tags' in request.GET:
         emails_dict = []
@@ -38,7 +38,7 @@ def search_call(request):
     print(emails)
     return render(
         request,
-        "../templates/intranet/home/dir.html",
+        "../templates/intranet/home/conference.html",
         {
             "user_emails": emails,
             "birthdays": queryset,
