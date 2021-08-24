@@ -63,7 +63,7 @@
                             </div>
                             <button class="openBtn" onclick="openSearch()"><span class="icon-search-1"></span></button>
                             <div class="sidebar_pushy">
-                                <a class="pushy_button sc_button wtg"  href="http://127.0.0.1:8000/profile/dge1du">
+                                <a class="pushy_button sc_button wtg"  href="http://127.0.0.1:8000/profile/dge{{ request.user.id }}du">
                                 <span class="icon-profile" ></span>
                                 </a>
                             </div>
@@ -89,7 +89,7 @@
                             <a class="sf_with_ul" href="/vacancies/"><span>Carrer</span></a>
                         </li>
                         <li class="icon-call menu-item menu-item-has-children">
-                            <a class="sf_with_ul" href="/dir/"><span>Calls</span></a>
+                            <a class="sf_with_ul" href="/conference/"><span>Calls</span></a>
                         </li>
                                </ul>
                             </li>
@@ -127,7 +127,7 @@
                            <ul>
                                {% for user in birthdays %}
                               <li>
-                                 <div class="post_thumb_bday" style="width: 40px; height: 40px;">
+                                 <div class="post_thumb_bday" styl e="width: 40px; height: 40px;">
                                     <img src={{ user.avatar.url }}  alt="" width="40" height="40" style = "border-radius: 50%;">
                                  </div>
                                  <div class="post_title" style = "margin-left: 54px;margin-top: -30px;">
