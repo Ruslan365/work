@@ -26,13 +26,14 @@ def profile_redactor(request, id):
             user.about = request.POST.get("about")
             user.facebook_id = request.POST.get("facebook_id")
             user.twitter_id = request.POST.get("twitter_id")
+            user.birth_date = request.POST.get("birth_date")
             user.save()
             return redirect(f"http://127.0.0.1:8000/profile/dge{id}du/")
         else:
             form = UserForm()
     return render(
         request,
-        "intranet/user/profile_redactor.html",
+        "intranet/user/profile_editor.html",
         {"form": form, "avatar": user.avatar},
     )
 

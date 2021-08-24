@@ -13,7 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
-def post_list_main(request):
+def post_list(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     return render(

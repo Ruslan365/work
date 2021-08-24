@@ -190,6 +190,11 @@ body{
     width: 1052px;
 }
 
+.pushy_button{
+    vertical-align: middle;
+    font-size: 1.2em;
+}
+
 .sc_image.full_width {
     margin-top: -4.3em;
     margin-left: -3.21em;

@@ -36,6 +36,9 @@ class LikeDislikeManager(models.Manager):
     def comments(self):
         return self.get_queryset().filter(content_type__model='comment').order_by('-comments__pub_date')
 
+    def total_comments(self):
+        return self.get_queryset().filter(content_type__model='comment').count()
+
 
 class LikeDislike(models.Model):
     LIKE = 1

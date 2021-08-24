@@ -45,7 +45,7 @@
                                    </a>
 
                                <a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3" href="#comments">
-                                   <span class="post_counters_number">{% with comments.count as total_comments %}
+                                   <span class="post_counters_number">{% with post.total_comments as total_comments %}
                             {{ total_comments }}
                                 {% endwith %}
                                    </span>
