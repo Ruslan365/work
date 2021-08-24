@@ -13,7 +13,7 @@ def search_call(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     if not request.user.is_superuser:
-        return HttpResponseRedirect(reverse('authentication:home_page'))
+        return HttpResponseRedirect(reverse('accounts:home_page'))
 
     if 'tags' in request.GET:
         emails_dict = []

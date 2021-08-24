@@ -8,7 +8,7 @@ urlpatterns = [
                   path("admin/", admin.site.urls),
                   path("", include("users.urls")),
                   path("", include("posts.urls")),
-                  path("", include("authentication.urls", namespace="authentication")),
+                  path("", include("accounts.urls", namespace="accounts")),
                   path("", include("members.urls")),
                   path("", include("vacancies.urls")),
                   path("", include("polls.urls", namespace="polls")),

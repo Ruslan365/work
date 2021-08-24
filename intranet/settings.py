@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "users",
     "posts",
-    "authentication.apps.IntranetConfig",
+    "accounts.apps.IntranetConfig",
     "crispy_forms",
     "django_summernote",
     "sorl.thumbnail",

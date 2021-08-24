@@ -3,7 +3,7 @@ from django.urls import path
 
 from calls import views as calls_views
 
-app_name = "authentication"
+app_name = "accounts"
 urlpatterns = [
     path("accounts/login/", auth_views.LoginView.as_view(), name="login"),
     path(

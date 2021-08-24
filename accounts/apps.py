@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class IntranetConfig(AppConfig):
-    name = 'authentication'
+    name = 'accounts'
