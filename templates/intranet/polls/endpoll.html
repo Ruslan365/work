@@ -1,0 +1,22 @@
+{#{% extends 'intranet/home/home_page.html' %}#}
+
+
+{% block content %}
+    <h3>Result for: {{ poll.text }}</h3>
+    {% for choice in poll.get_result_dict %}
+        <div><b>{{ choice.text }}-{{ choice.percentage|floatformat }}%</b></div>
+    {% endfor %}
+    <ul>
+        {% for choice in poll.choice_set.all %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ choice.choice_text }}
+                <span class="badge badge-primary badge-pill">{{ choice.get_vote_count }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <a class="btn btn-primary mt-3" href="{% url 'polls:list' %}" role="button">Back To Polls</a>
+    </div>
+
+    </div>
+    </div>
+{% endblock content %}

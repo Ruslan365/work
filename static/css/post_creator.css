@@ -1,0 +1,16 @@
+.post_title {
+    color: black;
+    background-color: #191315;
+}
+
+#id_title {
+    color: #191315;
+}
+
+.form-wrapper {
+    padding-top: 100px;
+}
+
+.action {
+    margin-bottom: 1000px;
+}
