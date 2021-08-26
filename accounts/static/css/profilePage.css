@@ -1306,7 +1306,6 @@ strong {
 }
 
 .sc_socials .sc_socials_item {
-    display: inline-block;
     margin: 0 4px 4px 0;
     outline: none;
 }
