@@ -7,9 +7,5 @@ django_static
 db.sqlite3
 npm-debug.log
 elasticsearch-7.12.1
-<<<<<<< HEAD
-style.css
-=======
-style.css
 package-lock.json
->>>>>>> 6e134f530da6fe73c52608583ad231f20c6b49d0
+quickstart.py

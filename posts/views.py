@@ -82,11 +82,13 @@ def tag_page(request, tag):
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def home_page(request):
+    titles = []
     queryset = User.objects.birthdays()
     user = User.objects.get(id=request.user.id)
     recent_posts = Post.objects.filter(is_published=1)[:5:]
+    btninfo = Post.objects.all()
     return render(request, "intranet/home/home_page.html",
-                  {"user": user, "recent_posts": recent_posts, "birthdays": queryset, })
+                  {"user": user, "recent_posts": recent_posts, "birthdays": queryset, "btninfo": btninfo})
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")

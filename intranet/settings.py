@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "posts.apps.PostsConfig",
     "django_summernote",
     "polls",
-    "calls",
+    "conference",
     "members",
     "vacancies",
 ]

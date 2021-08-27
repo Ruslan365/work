@@ -14,7 +14,7 @@ urlpatterns = [
                   path("", include("members.urls")),
                   path("", include("vacancies.urls")),
                   path("", include("polls.urls")),
-                  path("", include('calls.urls')),
+                  path("", include('conference.urls')),
                   path("", include("django.contrib.auth.urls")),
                   path("summernote/", include("django_summernote.urls")),
                   path("accounts/login/", auth_views.LoginView.as_view(), name="login"),

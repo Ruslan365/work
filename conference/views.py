@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from calls.start import event_creator
+from conference.start import event_creator
 from users.models import User
 from posts.models import Post
 
