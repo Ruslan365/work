@@ -1,0 +1,22 @@
+{% extends "intranet/user/profile.html" %}
+{% load static %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static "css/profile_editor.css" %}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/profile_editor.css" %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/"  method="post" enctype="multipart/form-data" class = "user_editor_form">
+    <h2 class = "edit_profile">Edit profile</h2>
+        {{ form.as_p|safe}}
+    {% csrf_token %}
+        <input type="submit" value="Save changes">
+    </form>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script><script>
+    $(document).ready(function() {
+      $('#id_birth_date').datepicker({dateFormat: "yy-mm-dd"});
+    });
+</script>
+{% endblock %}

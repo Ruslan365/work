@@ -1,0 +1,22 @@
+{#{% extends 'intranet/home/home_page.html' %}#}
+{% block content %}
+    <div>
+        <div>
+            <div>
+                <h2>Create new poll</h2>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div>
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit">Add Poll</button>
+                    <a href="{% url 'polls:list' %}" role="button">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

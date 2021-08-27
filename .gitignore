@@ -1,0 +1,11 @@
+node_modules
+venv
+*.pyc
+.idea
+__pycache__
+django_static
+db.sqlite3
+npm-debug.log
+elasticsearch-7.12.1
+style.css
+package-lock.json
