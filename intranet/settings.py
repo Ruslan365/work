@@ -38,12 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "users",
-    "posts",
-    "accounts.apps.IntranetConfig",
-    "crispy_forms",
+    "posts.apps.PostsConfig",
     "django_summernote",
-    "sorl.thumbnail",
-    "django_elasticsearch_dsl",
     "polls",
     "calls",
     "members",
@@ -122,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -135,6 +132,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 MEDIA_URL = "/media/"
@@ -144,6 +142,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = ""
+
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"

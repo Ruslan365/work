@@ -96,7 +96,6 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments", default="", null=True
     )
-    # author_avatar = models.ImageField(default="", height_field=30, width_field=30)
     body = models.TextField(default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

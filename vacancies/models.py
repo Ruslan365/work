@@ -6,7 +6,7 @@ CHOICES = (('full', 'Full Time'), ('part', 'Part Time'), ('freelance', 'Freelanc
 
 
 class Work(models.Model):
-    Position = models.CharField(max_length=30, blank=True)
-    Location = models.CharField(max_length=30, blank=True)
-    Salary = models.CharField(max_length=30, blank=True)
-    Deadline = models.CharField(max_length=300, choices=CHOICES)
+    position = models.CharField(max_length=30, blank=True)
+    location = models.CharField(max_length=30, blank=True)
+    salary = models.CharField(max_length=30, blank=True)
+    deadline = models.CharField(max_length=300, choices=CHOICES)

@@ -25,15 +25,13 @@
     <link rel="icon" href="../../../media/home_page_media/cropped-512x512-32x32.png" sizes="32x32">
     <meta charset="UTF_8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" rel="stylesheet" href="{% static 'css/fontello-5e9f466c/css/fontello.css' %}" type="text/css"
-          media="all">
+    <link rel="stylesheet" rel="stylesheet" href="{% static 'css/fontello-5e9f466c/css/fontello.css' %}" type="text/css" media="all">
     <link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static "css/summernote-rule.css" %}">
     <script src="https://use.fontawesome.com/6eeaf84dbc.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
     <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
-
 </head>
 <body class='home_page'>
 <div class='body_wrap'>
@@ -52,26 +50,28 @@
                 </div>
 
                 <div class="sidebar_wrap">
-                    <div class="top_panel_controls">
-                        <div class="sidebar_pushy">
-                            <a class='pushy_button sc_button wtg' href='#'>
-                                <span class="icon-right-open"></span>
-                            </a>
-                        </div>
-                        <div id='myOverlay' class="search_wrap">
-                            <span class="closebtn wtg" onclick="closeSearch()" title="Close Overlay">x</span>
-                            <div class="search_form_wrap">
-                                <form method="get" class="search_form" id="search_form"
-                                      action="http://127.0.0.1:8000/search/">
-                                    <input type="text" placeholder="Search.." name="query" id='query'>
-                                </form>
+                    <div class="sidebar_inner"></div>
+                        <div class="top_panel_controls">
+                            <div class="sidebar_pushy">
+                                <a class='pushy_button sc_button wtg' href='#'>
+                                    <span class="icon-right-open"></span>
+                                </a>
                             </div>
-                        </div>
-                        <button class="openBtn" onclick="openSearch()"><span class="icon-search-1"></span></button>
-                        <div class="sidebar_pushy">
-                            <a class="pushy_button sc_button wtg" href="http://127.0.0.1:8000/profile/dge{{ request.user.id }}du">
-                                <span class="icon-profile"></span>
-                            </a>
+                            <div id='myOverlay' class="search_wrap">
+                                <span class="closebtn wtg" onclick="closeSearch()" title="Close Overlay">x</span>
+                                <div class="search_form_wrap">
+                                    <form method="get" class="search_form" id="search_form"
+                                          action="http://127.0.0.1:8000/search/">
+                                        <input type="text" placeholder="Search.." name="query" id='query'>
+                                    </form>
+                                </div>
+                            </div>
+                            <button class="openBtn" onclick="openSearch()"><span class="icon-search-1"></span></button>
+                            <div class="sidebar_pushy">
+                                <a class="pushy_button sc_button wtg" href="http://127.0.0.1:8000/profile/dge{{ request.user.id }}du">
+                                    <span class="icon-profile"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
                                             <img src={{ user.avatar.url }}  alt="" width="38" height="38"
                                                  style="border-radius: 50%;">
                                         </div>
-                                        <div class="post_title" style="margin-left: 54px;margin-top: -30px;">
+                                        <div class="post_title_recent_posts" >
                                             <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du"><strong>{{ user.first_name }} {{ user.last_name }}</strong></a>
                                             ({{ user.age }}) <i>on</i>
                                             <span class="date">{{ user.birth_date.month| month_name }} {{ user.birth_date.day }}</span>
@@ -153,14 +153,14 @@
                         {% for post in recent_posts %}
                             <article class="post_item_with_thumb first">
                                 {% if post.preview_pic %}
-                                    <div class="post_thumb_pic">
+                                    <div class="post_thumb_pic_sidebar">
                                         <img src="{{ post.preview_pic.url }}" class="post_preview_image" width="65px"
                                              height="65px">
                                     </div>
                                 {% else %}
                                 {% endif %}
                                 <div class="post_content_recent_posts">
-                                    <h6 class="post_title">
+                                    <h6 class="post_title_recent_posts">
                                         <a href="http://127.0.0.1:8000/post/{{ post.pk }}">{{ post.title }}</a>
                                     </h6>
                                     <div class="post_info">

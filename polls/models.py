@@ -18,7 +18,6 @@ class Poll(models.Model):
             return False
         return True
 
-    @property
     def get_vote_count(self):
         return self.vote_set.count()
 
@@ -49,7 +48,6 @@ class Choice(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=255)
 
-    @property
     def get_vote_count(self):
         return self.vote_set.count()
 

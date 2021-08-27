@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .forms import UserForm
-from .models import User, Role
+from .models import User
 from django.shortcuts import render, get_object_or_404, redirect
 from posts.models import Post
 from posts.forms import PostForm

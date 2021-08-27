@@ -3,8 +3,7 @@ from posts.models import Post, Comment, LikeDislike
 from posts.forms import CommentForm, PostForm, SearchForm
 from users.models import User
 from django.contrib.auth.decorators import login_required
-from elasticsearch_dsl.query import MultiMatch
-from elasticsearch_dsl import Search
+from django.db.models import Q
 from elasticsearch import Elasticsearch
 import json
 from django.http import HttpResponse
@@ -18,7 +17,7 @@ def post_list(request):
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     return render(
         request,
-        "intranet/home/post/post_list.html",
+        "intranet/post/post_list.html",
         {
             "recent_posts": recent_posts,
             "birthdays": queryset,
@@ -51,7 +50,7 @@ def post_detail(request, pk):
         comment_form = CommentForm()
     return render(
         request,
-        "../templates/intranet/home/post/post_detail.html",
+        "../templates/intranet/post/post_detail.html",
         {
             "post": post,
             "comments": comments,
@@ -66,7 +65,7 @@ def post_detail(request, pk):
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
 def comment_page(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
-    return render(request, 'intranet/home/post/comment_page.html', {'comment':comment})
+    return render(request, 'intranet/post/comment_page.html', {'comment': comment})
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
@@ -74,7 +73,7 @@ def tag_page(request, tag):
     posts = Post.objects.filter(tag__name=tag)
     return render(
         request,
-        "intranet/home/tag_page.html",
+        "intranet/tag_page.html",
         {
             "posts": posts,
         },
@@ -86,7 +85,8 @@ def home_page(request):
     queryset = User.objects.birthdays()
     user = User.objects.get(id=request.user.id)
     recent_posts = Post.objects.filter(is_published=1)[:5:]
-    return render(request, "intranet/home/home_page.html", {"user": user, "recent_posts":recent_posts, "birthdays":queryset, })
+    return render(request, "intranet/home/home_page.html",
+                  {"user": user, "recent_posts": recent_posts, "birthdays": queryset, })
 
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
@@ -122,15 +122,10 @@ def post_creator(request, id):
         {
             "user": user,
             "post_form": post_form,
-            "recent_posts":recent_posts,
+            "recent_posts": recent_posts,
             # "email": email,
         },
     )
-
-
-
-
-
 
 
 def post_search(request):
@@ -143,28 +138,28 @@ def post_search(request):
         form = SearchForm(request.GET)
         if form.is_valid():
             search_query = form.cleaned_data["query"]
-            q_posts = MultiMatch(query=search_query, fields=["title", "body", "description"], fuzziness="AUTO")
-            q_users = MultiMatch(query=search_query, fields=["first_name", "last_name", "email"], fuzziness="AUTO")
-            s_posts = Search(using=client, index="posts").query(q_posts)
-            s_users = Search(using=client, index="users").query(q_users)
-            response_posts = s_posts.execute()
-            response_users = s_users.execute()
-            all_posts = []
-            all_users = []
-            for hit in response_posts.hits:
-                all_posts.append(Post.objects.get(id=hit.id))
-            for hit in response_users.hits:
-                all_users.append(User.objects.get(id=hit.id))
+            q_splitted = search_query.split(" ")
+            all_users = User.objects.filter(
+                Q(first_name__icontains=f"{q_splitted[0]}") | Q(last_name__icontains=f"{q_splitted[0]}"))
+            all_posts = Post.objects.filter(
+                Q(title__icontains=f"{q_splitted[0]}") | Q(body__icontains=f"{q_splitted[0]}") | Q(
+                    description__icontains=f"{q_splitted[0]}"))
+            for search_word in q_splitted:
+                all_users = all_users & User.objects.filter(
+                    Q(first_name__icontains=f"{search_word}") | Q(last_name__icontains=f"{search_word}"))
+                all_posts = all_posts & Post.objects.filter(
+                    Q(title__icontains=f"{search_word}") | Q(body__icontains=f"{search_word}") | Q(
+                        description__icontains=f"{search_word}"))
             return render(
                 request,
-                "intranet/home/search_page.html",
+                "intranet/post/search_page.html",
                 {
                     "form": form,
                     "query": search_query,
-                    "results_posts": all_posts[:5:],
-                    "results_users": all_users[:5:],
-                    "birthdays":queryset,
-                    "recent_posts":recent_posts,
+                    "results_posts": all_posts[0:5:-1],
+                    "results_users": all_users[:5],
+                    "birthdays": queryset,
+                    "recent_posts": recent_posts,
                 },
             )
 

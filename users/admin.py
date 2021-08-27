@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, SocialNetwork, Role
+from .models import User
 
 
 @admin.register(User)
@@ -9,16 +9,3 @@ class UserAdmin(admin.ModelAdmin):
         "last_login_at",
     ]
     readonly_fields = ("password", "created_at", "last_login_at")
-
-
-admin.site.register(SocialNetwork)
-
-
-@admin.register(Role)
-class RoleAdmin(admin.ModelAdmin):
-    list_display = [
-        "name",
-    ]
-
-    class Meta:
-        model = Role

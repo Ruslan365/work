@@ -1,0 +1,60 @@
+.content_wrap {
+    background-color: white;
+}
+
+.dir_box {
+    padding: 1.857em;
+    background-color: #f7f7f7;
+    border-color: #f7f7f7;
+    width: 100%;
+    height: 443px;
+    display: table-cell;
+}
+
+.input [type="submit"] {
+    background-color: #2a3342;
+    width: 200px;
+    color: white;
+    min-width: 25em;
+    min-height: 3.5em;
+}
+
+.beautiful_color {
+    color: #1ebeb4;
+    font-size: 40px;
+    margin-top: 1.7em;
+}
+
+.dir_box_inner {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.ui-autocomplete-input {
+    min-height: 4em;
+    min-width: 25em;
+}
+
+#room {
+    min-width: 26.5em;
+}
+
+#tags {
+    min-width: 25em
+}
+
+#partydate {
+    min-width: 25em;
+}
+
+.frame {
+    transition: all 0.2s;
+}
+
+@media (max-width: 400px) {
+
+    .frame {
+        width: 400px
+    }
+
+}
