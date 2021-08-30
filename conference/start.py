@@ -11,7 +11,7 @@ SCOPES = ['https://www.googleapis.com/auth/calendar']
 API_key = 'AIzaSyCEtMB04UgT0sc1abINROvlsU_AQjyWzVI'
 
 
-def event_creator(attendees, event_time, broxus):
+def event_creator(attendees, event_time, room):
     event = {
         'description': 'Link to ds',
         'start': {
@@ -46,5 +46,5 @@ def event_creator(attendees, event_time, broxus):
             token.write(creds.to_json())
     service = build('calendar', 'v3', credentials=creds)
     now = datetime.datetime.utcnow().isoformat() + 'Z'
-    event = service.events().insert(calendarId=broxus, body=event).execute()
+    event = service.events().insert(calendarId=room, body=event).execute()
     # 'Z' indicates UTC time
