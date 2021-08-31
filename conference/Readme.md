@@ -8,6 +8,6 @@
    <img alt="accessibility text" src="https://habrastorage.org/r/w1560/storage/0309cc52/d3bd6b1e/b44ab1f6/64e01804.png" width="100%"/>
 
 Для добавления/изменения комнат измените select с id = room на странице conference.html  
-<! <option value="room id">отображаемое значение >
+<!-- <option value="room id">отображаемое значение -->
 Room id(идентификатор календаря) вы можете найти в настройках своего календаря
 </h2>
