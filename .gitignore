@@ -9,3 +9,5 @@ npm-debug.log
 elasticsearch-7.12.1
 package-lock.json
 quickstart.py
+Pipfile
+Pipfile.lock

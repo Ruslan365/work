@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.contenttypes.models import ContentType
-from users.models import User
+
 
 CHOICES = (('full', 'Full Time'), ('part', 'Part Time'), ('freelance', 'Freelance'))
 
