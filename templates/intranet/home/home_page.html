@@ -1,0 +1,370 @@
+{% load static %}
+{% load markdown_extras %}
+
+<!DOCTYPE html>
+<html class='scheme'>
+
+<style>
+    a {
+        transition: 0.5s;
+        color: #2a3342; /* Цвет обычной ссылки */
+        padding: 2px; /* Поля вокруг текста */
+        text-decoration: none;
+    }
+
+    #menu_main > li > a:hover {
+        background: #1ebeb4;
+    }
+
+    .non:hover {
+        background: none;
+    }
+</style>
+<head>
+    <title>Dexpaland</title>
+    <link rel="icon" href="../../../media/home_page_media/cropped-512x512-32x32.png" sizes="32x32">
+    <meta charset="UTF_8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" rel="stylesheet" href="{% static 'css/fontello-5e9f466c/css/fontello.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/summernote-rule.css" %}">
+    <script src="https://use.fontawesome.com/6eeaf84dbc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
+        <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css">
+</head>
+<body class='home_page'>
+<div class='body_wrap'>
+    <div class='page_wrap'>
+        <header class="top_panel_wrap">
+            <div class="top_panel_wrap_inner">
+                <div class="menu_pushy"><span class="icon-menu">&#9776; Menu</span></div>
+                <div class="content_wrap_head">
+                    <div class="contact_logo">
+                        <div class="logo">
+                            <a class="non" href="http://127.0.0.1:8000/"><img alt=''
+                                                                              src='../../../media/home_page_media/logo_dark.png'
+                                                                              width='241' height='53'></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar_wrap">
+                    <div class="sidebar_inner"></div>
+                        <div class="top_panel_controls">
+                            <div class="sidebar_pushy">
+                                <a class='pushy_button sc_button wtg' href='#'>
+                                    <span class="icon-right-open"></span>
+                                </a>
+                            </div>
+                            <div id='myOverlay' class="search_wrap">
+                                <span class="closebtn wtg" onclick="closeSearch()" title="Close Overlay">x</span>
+                                <div class="search_form_wrap">
+                                    <form method="get" class="search_form" id="search_form"
+                                          action="http://127.0.0.1:8000/search/">
+                                        <input type="text" placeholder="Введите имя пользователя или название поста" name="query" id='query'>
+                                    </form>
+                                </div>
+                            </div>
+                            <button class="openBtn" onclick="openSearch()"><span class="icon-search-1"></span></button>
+                            <div class="sidebar_pushy">
+                                <a class="pushy_button sc_button wtg" href="http://127.0.0.1:8000/profile/dge{{ request.user.id }}du">
+                                    <span class="icon-profile"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </header>
+        <div class='page_content_wrap'>
+
+            <div class='menu_main_wrap'>
+                <nav class='menu_main_nav_area'>
+                    <ul id="menu_main" class="menu_main_nav">
+                        <li class="icon-folder menu-item current_menu_ancestor">
+                            <a class="sf_with_ul white" href="http://127.0.0.1:8000/"><span>Dashboard</span></a>
+                        </li>
+                        <li class="icon-school menu-item menu-item-has-children" style="display: block"><a
+                                class="sf_with_ul" href="/list/"><span>Blog</span></a></li>
+
+                        <li class="icon-users_group menu-item menu-item-has-children" style="display: block">
+                            <a class="sf_with_ul" href="/members/"><span>Members</span></a>
+
+                        </li>
+                        <li class="icon-rocket menu-item menu-item-has-children">
+                            <a class="sf_with_ul" href="/vacancies/"><span>Carrer</span></a>
+                        </li>
+                        <li class="icon-call menu-item menu-item-has-children">
+                            <a class="sf_with_ul" href="/conference/"><span>Conference</span></a>
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class='content_wrap'>
+                {% block content %}
+                    <article class="post_item post_item_single post_format_standard page hentry">
+                        <section class="post_content">
+                            <div class="vc_row wpb_row vc_row_fluid">
+                                <div class="wpb_column vc_column_container vc_col_sm_12">
+                                    <div class="vc_column_inner">
+                                        <div class="wpb_wrapper">
+                                            <figure class="sc_image  sc_image_shape_square full_width">
+                                                <img src="../../../media/home_page_media/banner-1.jpg" alt="">
+                                            </figure>
+                                            <div class="vc_empty_space hem_3_2">
+                                                <span class="vc_empty_space_inner"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                {% endblock content %}
+            </div>
+            <div class="sidebar_wrap sidebar widget_area scheme_original" role="complementary" style="width: 410px;">
+                <div class="sidebar_inner widget_area_inner sidebar_widget_area" style="position: static; top: auto;">
+                    <aside class="widget_number_1 widget widget_birthdays">
+                        <h5 class="widget_title">Upcoming Birthday</h5>
+                        <div class="widget_birthdays_inner">
+                            <ul>
+                                {% for user in birthdays %}
+                                    <li>
+                                        <div class="post_thumb_bday">
+                                            <img src={{ user.avatar.url }}  alt="" width="38" height="38"
+                                                 style="border-radius: 50%;">
+                                        </div>
+                                        <div class="post_title_recent_posts" >
+                                            <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du"><strong>{{ user.first_name }} {{ user.last_name }}</strong></a>
+                                            ({{ user.age }}) <i>on</i>
+                                            <span class="date">{{ user.birth_date.month| month_name }} {{ user.birth_date.day }}</span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </aside>
+                    <aside class="widget widget_recent_posts">
+                        <h5 class='widget_title'>Recent posts</h5>
+                        {% for post in recent_posts %}
+                            <article class="post_item_with_thumb first">
+                                {% if post.preview_pic %}
+                                    <div class="post_thumb_pic_sidebar">
+                                        <img src="{{ post.preview_pic.url }}" class="post_preview_image" width="65px"
+                                             height="65px">
+                                    </div>
+                                {% else %}
+                                {% endif %}
+                                <div class="post_content_recent_posts">
+                                    <h6 class="post_title_recent_posts">
+                                        <a href="http://127.0.0.1:8000/post/{{ post.pk }}">{{ post.title }}</a>
+                                    </h6>
+                                    <div class="post_info">
+                                <span class="post_info_item post_info_posted">
+                                    {{ post.get_date }}
+                                </span>
+                                        <span class="post_info_item post_info_posted_by">
+                                    by <a href="http://127.0.0.1:8000/profile/dge{{ post.author.id }}du">  {{ post.author.first_name }} {{ post.author.last_name }}</a>
+                                </span>
+                                    </div>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    </aside>
+                </div>
+            </div>
+            <footer class="footer_wrap widget_area scheme_original">
+                <div class="footer_wrap_inner widget_area_inner">
+                    <div class="content_wrap_footer">
+                        <div class="columns_wrap">
+                            <aside class="widget_number_1 column-1_3 widget widget_text">
+                                <h5 class="widget_title">Micro office group</h5>
+                                <div class="textwidget">
+                                    <p>Nam finibus sapien et sem venenatis vulputate. Nunc bibendum tincidunt egestas.
+                                        Integer sollicitudin aliquet justo vel posuere. </p>
+                                    <p>Praesent fermentum lorem nisi, at posuere mi bibendum eget.</p>
+                                    <img src="../../../media/home_page_media/John-Anderson-.png" alt="">
+                                </div>
+                            </aside>
+                            <aside class="column-1_3 widget widget_text">
+                                <h5 class="widget_title">Contact us</h5>
+                                <div class="textwidget" style="margin-top: -0.448em; top: auto;">
+                                    <ul class="sc_list sc_list_style_iconed" style="padding-left:0;">
+                                        <li class="sc_list_item odd first">
+                                            <span class="sc_list_icon icon-location-1"></span>
+                                            <div class="wpb_text_column wpb_content_element">
+                                                <div class="wpb_wrapper">
+                                                    <h6>Address:</h6>
+                                                    <div>8500 Lorem Street, Chicago, IL, 55030</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="sc_list_item even">
+                                            <span class="sc_list_icon icon-phone-circled"></span>
+                                            <div class="wpb_text_column wpb_content_element">
+                                                <div class="wpb_wrapper">
+                                                    <h6>Call Us: </h6>
+                                                    <p>+1 800 456 78 90</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="sc_list_item odd">
+                                            <span class="sc_list_icon icon-pencil-neg"></span>
+                                            <div class="wpb_text_column wpb_content_element">
+                                                <div class="wpb_wrapper">
+                                                    <h6>Email:</h6>
+                                                    <p>info@yoursite.com</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </aside>
+                            <aside class="column-1_3 widget widget_nav_menu">
+                                <h5 class="widget_title">Navigation</h5>
+                                <div class="menu-sidebar-menu-container">
+                                    <ul id="menu-sidebar-menu-1" class="menu" style="padding-left:0">
+                                        <li><a href="#">Open a Ticket</a></li>
+                                        <li><a href="#">Corporate Landing Demo</a></li>
+                                        <li><a href="#">Education Demo</a></li>
+                                        <li><a href="#">Online Documentation</a></li>
+                                        <li><a href="#">Featured Pages</a></li>
+                                    </ul>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/template.shortcodes.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/test.js' %}" type="text/javascript"></script>
+<script>
+    $('.icon-right-open').on('click', function () {
+        if ($('.sidebar_inner').is(':visible')) {
+            $('.sidebar_inner').hide(100);
+            $('.sidebar').hide(100);
+            $('.content_wrap').css("width", "calc(85% - 410px)");
+            $(this).toggleClass('icon-open');
+
+        } else {
+            $('.sidebar').show(100);
+            $('.sidebar_inner').show(100);
+            $(this).removeClass('icon-open');
+            $('.content_wrap').css("width", "1052px");
+
+        }
+    });
+</script>
+<script>
+    $('.menu_pushy').on('click', function () {
+        if ($('#menu_main').is(':visible')) {
+            $(' .menu_main_wrap ').hide(100);
+            $(' #menu_main ').hide(100);
+
+        } else {
+            $(' #menu_main ').show(100);
+            $(' .menu_main_nav_area ').show(100);
+            $(' .menu_main_wrap ').show(100);
+            $(' .menu_main_wrap ').css('display', 'table-cell')
+        }
+    });
+</script>
+<script>
+$(function () {
+let availableTags = [
+    {% for inf in btninfo %}
+        "{{ inf.title }}",
+    {% endfor %}
+];
+let new_availableTags = [];
+
+                // define a variable to store all the selected values.
+                let selectedVal = [];
+
+                function split(val) {
+                    return val.split(/,\s*/);
+                }
+
+                function extractLast(term) {
+                    return split(term).pop();
+                }
+
+                // prevent the user from going behind via cursor //cursor always on last
+                $("#query").on('click', (event) => {
+                    event.currentTarget.setSelectionRange(-1, -1);
+                });
+
+                $("#query")
+                    // don't navigate away from the field on tab when selecting an item
+                    .on("keydown", function (event) {
+
+                        // prevent from giving space(32), delete(46), going back(37) and forward(39), delete a whole word(Ctrl + Backspace(8))
+                        if (event.keyCode === 46 || event.keyCode === 37 || event.keyCode === 39 || (event.ctrlKey && event.keyCode === 8)) {
+
+                            event.preventDefault();
+
+                        } else if (event.keyCode === 8) { // on pressing backspace
+
+                            let prev_val = event.currentTarget.value; //get the current input value
+                            let last_char = prev_val.charAt(prev_val.length - 1); //get the last character of value
+
+                            if (last_char === ',') {
+                                selectedVal.pop();  //delete last element only if last character is a comma(,)
+                            }
+                        }
+
+                        if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
+                            event.preventDefault();
+                        }
+                        //console.log(selectedVal);
+                        new_availableTags = availableTags;  //assign the value to the new variable
+
+                        selectedVal.forEach((selected) => {
+                            // only keep the values which are not selected
+                            new_availableTags = new_availableTags.filter(item => item !== selected);
+                        });
+                    })
+                    .autocomplete({
+                        minLength: 0,
+                        source: function (request, response) {
+                            // delegate back to autocomplete, but extract the last term
+                            response($.ui.autocomplete.filter(
+                                new_availableTags, extractLast(request.term)));
+                        },
+                        focus: function () {
+                            // prevent value inserted on focus
+                            return false;
+                        },
+                        select: function (event, ui) {
+
+                            selectedVal.push(ui.item.value);  // insert the selected value in selectedVal
+                            console.log(`selectedVal: ${selectedVal}`);
+                            var terms = split(this.value);
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push(ui.item.value);
+
+                            // add placeholder to get the comma-and-space at the end
+                            terms.push("");
+                            this.value = terms.join(", ");
+                            return false;
+                        }
+                    });
+            });
+</script>
+</body>
+</html>

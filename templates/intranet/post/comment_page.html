@@ -1,0 +1,12 @@
+{% extends 'intranet/home/home_page.html' %}
+{% load markdown_extras %}
+{% block title %}comment{% endblock %}
+{% block content %}
+    {% with comments.count as total_comments %}
+<h2>
+    {{ total_comments }} comment{{ total_comments|pluralize }}
+</h2>
+{% endwith %}
+        <p>{{ comment.author }} on {{ comment.created_at }}</p>
+        <p>{{ comment.body|markdown|safe|linebreaks }}</p>
+{% endblock %}

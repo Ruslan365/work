@@ -1,0 +1,121 @@
+{% extends 'intranet/home/home_page.html' %}
+{% load markdown_extras %}
+{% load static %}
+<div class='content_wrap'>
+    {% block content %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/conference.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
+        <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+              rel="stylesheet" type="text/css"/>
+        <iframe class="frame"
+                src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Europe%2FMoscow&amp;src=cnVzbGFuYXRvcmFiZHVsbGFldkBnbWFpbC5jb20&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%234285F4"
+                style="border:solid 1px #777" width="370" height="500" frameborder="0" scrolling="no" align="right"
+                marginheight="0" marginwidth="10"></iframe>
+        <div class="dir_box">
+            <div class="dir_box_inner">
+                <h2 class=beautiful_color>Create your event</h2>
+                <form>
+                    <p><select id=room required name="room">
+                        <option value="badworker123@gmail.com">main</option>
+                        <option value="tlakp2thnrj2kpl0bi68r2flu0@group.calendar.google.com">broxus</option>
+                        <option value="cr2qa69mtkrdacsft2bbhpbf10@group.calendar.google.com">nexus</option>
+                        <option value="rfbmnh67rbn7s3d1181llsdd68@group.calendar.google.com">zikkurat</option>
+                    </select></p>
+                    <p><input id="partydate" type="datetime-local" name="partydate" required>
+                    <p><textarea rows="5" cols="24" name="tags" id='tags'></textarea></p>
+                    <div class="input"><input type="submit" value="INVITE" id="search-btn"></div>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            $(function () {
+                let availableTags = [
+                    {% for email in user_emails %}
+                        "{{ email }}",
+                    {% endfor %}
+                ];
+                let new_availableTags = [];
+
+                // define a variable to store all the selected values.
+                let selectedVal = [];
+
+                function split(val) {
+                    return val.split(/,\s*/);
+                }
+
+                function extractLast(term) {
+                    return split(term).pop();
+                }
+
+                // prevent the user from going behind via cursor //cursor always on last
+                $("#tags").on('click', (event) => {
+                    event.currentTarget.setSelectionRange(-1, -1);
+                });
+
+                $("#tags")
+                    // don't navigate away from the field on tab when selecting an item
+                    .on("keydown", function (event) {
+
+                        // prevent from giving space(32), delete(46), going back(37) and forward(39), delete a whole word(Ctrl + Backspace(8))
+                        if (event.keyCode === 46 || event.keyCode === 37 || event.keyCode === 39 || (event.ctrlKey && event.keyCode === 8)) {
+
+                            event.preventDefault();
+
+                        } else if (event.keyCode === 8) { // on pressing backspace
+
+                            let prev_val = event.currentTarget.value; //get the current input value
+                            let last_char = prev_val.charAt(prev_val.length - 1); //get the last character of value
+
+                            if (last_char === ',') {
+                                selectedVal.pop();  //delete last element only if last character is a comma(,)
+                            }
+                        }
+
+                        if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
+                            event.preventDefault();
+                        }
+                        //console.log(selectedVal);
+                        new_availableTags = availableTags;  //assign the value to the new variable
+
+                        selectedVal.forEach((selected) => {
+                            // only keep the values which are not selected
+                            new_availableTags = new_availableTags.filter(item => item !== selected);
+                        });
+                    })
+                    .autocomplete({
+                        minLength: 0,
+                        source: function (request, response) {
+                            // delegate back to autocomplete, but extract the last term
+                            response($.ui.autocomplete.filter(
+                                new_availableTags, extractLast(request.term)));
+                        },
+                        focus: function () {
+                            // prevent value inserted on focus
+                            return false;
+                        },
+                        select: function (event, ui) {
+
+                            selectedVal.push(ui.item.value);  // insert the selected value in selectedVal
+                            console.log(`selectedVal: ${selectedVal}`);
+                            var terms = split(this.value);
+                            // remove the current input
+                            terms.pop();
+                            // add the selected item
+                            terms.push(ui.item.value);
+
+                            // add placeholder to get the comma-and-space at the end
+                            terms.push("");
+                            this.value = terms.join(", ");
+                            return false;
+                        }
+                    });
+            });
+        </script>
+    {% endblock content %}
+</div>
+
