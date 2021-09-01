@@ -253,17 +253,20 @@
 <script src="{% static 'js/test.js' %}" type="text/javascript"></script>
 <script>
     $('.icon-right-open').on('click', function () {
-        if ($('.sidebar_inner').is(':visible')) {
-            $('.sidebar_inner').hide(100);
-            $('.sidebar').hide(100);
-            $('.content_wrap').css("width", "calc(85% - 410px)");
+        if ($('.sidebar_inner').is(':visible'))
+        {
+            $('.sidebar_inner').hide(200);
+            $('.sidebar').hide(200);
+            $('.content_wrap').css("max-width", "calc(84vw)");
+            $('.content_wrap').css("width", "calc(84vw)");
             $(this).toggleClass('icon-open');
-
-        } else {
-            $('.sidebar').show(100);
-            $('.sidebar_inner').show(100);
+        } else
+        {
+            $('.sidebar').show(200).delay(200);
+            $('.sidebar_inner').show(200);
             $(this).removeClass('icon-open');
-            $('.content_wrap').css("width", "1052px");
+            $('.content_wrap').css("width", "calc(84vw - 410px)");
+            $('.content_wrap').css("max-width", "calc(84vw - 410px)")
 
         }
     });

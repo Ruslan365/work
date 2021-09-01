@@ -235,7 +235,6 @@ article {
 }
 
 .content_wrap {
-    width: 1040px;
     z-index: 2;
     position: relative;
     background-color: #fff;
@@ -302,7 +301,6 @@ figure, .wp_caption_overlay .wp_caption {
 
 .top_panel_wrap_inner, .page_content_wrap, .footer_wrap {
     padding-right: 12px;
-    width: 100%
 }
 
 .footer_wrap {
@@ -1113,10 +1111,7 @@ strong {
     word-break: break-all
 }
 
-.page_content_wrap .content_wrap {
-    width: 1052px;
-    max-width: 1052px
-}
+
 
 .sidebar_wrap {
     max-width: 410px
