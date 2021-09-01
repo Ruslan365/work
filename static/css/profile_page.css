@@ -235,6 +235,10 @@ article {
 }
 
 .content_wrap {
+<<<<<<< HEAD
+=======
+    width: 1040px;
+>>>>>>> a486074a795e86cc33c0153667db5f7c02851f56
     z-index: 2;
     position: relative;
     background-color: #fff;
@@ -301,6 +305,10 @@ figure, .wp_caption_overlay .wp_caption {
 
 .top_panel_wrap_inner, .page_content_wrap, .footer_wrap {
     padding-right: 12px;
+<<<<<<< HEAD
+=======
+    width: 100%
+>>>>>>> a486074a795e86cc33c0153667db5f7c02851f56
 }
 
 .footer_wrap {
@@ -1111,7 +1119,14 @@ strong {
     word-break: break-all
 }
 
+<<<<<<< HEAD
 
+=======
+.page_content_wrap .content_wrap {
+    width: 1052px;
+    max-width: 1052px
+}
+>>>>>>> a486074a795e86cc33c0153667db5f7c02851f56
 
 .sidebar_wrap {
     max-width: 410px

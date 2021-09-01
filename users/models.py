@@ -72,6 +72,11 @@ class User(AbstractUser):
     facebook_id = models.CharField('https://facebook/public/', max_length=255, blank=True, null=True)
     objects = UserManager()
 
+    def image_thumb(self):
+        return '<img src="{}" width="80"/>'.format(self.avatar.url)
+
+    image_thumb.allow_tags = True
+
     def __str__(self):
         return f"User {self.email}"
 

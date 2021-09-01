@@ -56,5 +56,8 @@
     .frame {
         width: 400px
     }
-
+    .content_wrap{
+        width: 100%;
+        max-width: 100%;
+    }
 }

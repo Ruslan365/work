@@ -10,7 +10,20 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/"  method="post" enctype="multipart/form-data" class = "user_editor_form">
     <h2 class = "edit_profile">Edit profile</h2>
+<<<<<<< HEAD
         {{ form.as_p|safe}}
+=======
+        {{ form.avatar.label_tag}}
+        {% if form.avatar %}
+            <img src = "{{ request.user.avatar.url }}" width="80px" height="80px">
+        {% endif %}
+        <p>{{ form.avatar }}</p>
+        <p>{{ form.avatar.errors }}</p>
+        <p>First name: {{ form.first_name }}</p>
+        <p>Last name: {{ form.last_name }}</p>
+        <p>About: {{ form.about }}</p>
+        <p>Birth date: {{ form.birth_date }}</p>
+>>>>>>> a486074a795e86cc33c0153667db5f7c02851f56
     {% csrf_token %}
         <input type="submit" value="Save changes">
     </form>
