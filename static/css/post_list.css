@@ -392,9 +392,7 @@ h2 {
     margin-bottom: 0.85em;
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, address {
-    margin: 0;
-}
+
 
 .comments_wrap .comment-respond {
     padding-bottom: 4px;
