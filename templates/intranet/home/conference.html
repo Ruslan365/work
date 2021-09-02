@@ -87,6 +87,7 @@
                 });
             })
             .autocomplete({
+                max:10,
                 minLength: 0,
                 source: function (request, response) {
                     // delegate back to autocomplete, but extract the last term

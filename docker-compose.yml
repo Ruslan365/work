@@ -20,3 +20,4 @@ services:
     restart: always
 volumes:
   postgres_data:
+  static/css/homepage.css:

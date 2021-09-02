@@ -182,6 +182,7 @@
                     </aside>
                 </div>
             </div>
+        </div>
             <footer class="footer_wrap widget_area scheme_original">
                 <div class="footer_wrap_inner widget_area_inner">
                     <div class="content_wrap_footer">
@@ -262,11 +263,11 @@
             $(this).toggleClass('icon-open');
         } else
         {
-            $('.sidebar').show(200).delay(200);
+            $('.sidebar').show(200);
             $('.sidebar_inner').show(200);
             $(this).removeClass('icon-open');
             $('.content_wrap').css("width", "calc(84vw - 410px)");
-            $('.content_wrap').css("max-width", "calc(84vw - 410px)")
+            $('.content_wrap').css("max-width", "calc(84vw - 410px)");
 
         }
     });
@@ -276,12 +277,12 @@
         if ($('#menu_main').is(':visible')) {
             $(' .menu_main_wrap ').hide(100);
             $(' #menu_main ').hide(100);
-
         } else {
+            $(' .menu_main_wrap ').css('display', 'table-cell');
             $(' #menu_main ').show(100);
             $(' .menu_main_nav_area ').show(100);
             $(' .menu_main_wrap ').show(100);
-            $(' .menu_main_wrap ').css('display', 'table-cell')
+
         }
     });
 </script>

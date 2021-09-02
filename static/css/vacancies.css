@@ -60,3 +60,12 @@ table a {
 .sc_table table tbody tr:nth-child(2n) {
     background-color: #fff;
 }
+.menu_main_wrap {
+    background-color: #383a3f;
+}
+.menu_main_nav > li > a {
+    color: #ffffff;
+}
+.menu_main_nav > li::before {
+    color: #ffffff;
+}

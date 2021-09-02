@@ -1,7 +1,7 @@
 .ivc_char {
     padding-bottom: 30px;
     width: 20vh;
-    height: 50vh;
+    height: 40vh;
     float: left;
     padding-right: 1em;
     background-color: white;
@@ -57,3 +57,12 @@
     text-align: center;
 }
 
+.menu_main_wrap {
+    background-color: #383a3f;
+}
+.menu_main_nav > li > a {
+    color: #ffffff;
+}
+.menu_main_nav > li::before {
+    color: #ffffff;
+}

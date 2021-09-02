@@ -748,6 +748,10 @@ html, body {
     border-bottom: 2px solid white;
 }
 
+.content_wrap{
+    height: calc(100vh - 200px);
+}
+
 @media (max-width: 1023px) {
 
     .menu_main_nav {
@@ -761,7 +765,9 @@ html, body {
     .sidebar_wrap {
         display: none;
     }
-
+    .content_wrap {
+        max-width: 100%;
+    }
     .menu_pushy {
         display: table-cell;
     }

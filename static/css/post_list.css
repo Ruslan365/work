@@ -39,7 +39,8 @@ h1 {
     font-weight: 500;
     margin-bottom: 2.4em;
 }
-
+p {width: 100%;
+word-break: break-all}
 
 article.post_item_single {
     overflow: hidden;
