@@ -1,0 +1,167 @@
+{% extends "intranet/post/post_list.html" %}
+
+{% block content %}
+    {% load static %}
+    {% load markdown_extras %}
+    <title>Dexpaland</title>
+    <link rel="icon" href="../../../../media/home_page_media/cropped-512x512-32x32.png" sizes="32x32">
+    <meta charset="UTF_8">
+    <meta name="viewport" content="width=device_width">
+    <link rel="stylesheet" rel="stylesheet" href="{% static 'css/fontello-383eea86/css/fontello.css' %}" type="text/css"
+          media="all">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/summernote-rule.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/post_list.css' %}">
+    <script src="{% static 'js/template.shortcodes.js' %}" type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/6eeaf84dbc.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="{% static 'js/carhartl-jquery-cookie-92b7715/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/likescript.js' %}" type="text/javascript"></script>
+
+    <div class="content_wrap_with_title">
+        <div class="top_panel_title">
+            <div class="top_panel_title_inner">
+                <h1 class="page_title"></h1>
+            </div>
+        </div>
+    <div style="font-size: 2em; text-align: center;margin-bottom: 50px;">
+        Found {{posts_counted}} post{{ posts_counted|pluralize }} and
+         {{users_counted}} User{{ users_counted|pluralize }}
+    </div>
+        {% if results_posts or results_users %}
+            {% if results_posts %}
+                {% for post in results_posts %}
+                    <article class="post_item post_item_excerpt post_format_standard post hentry"
+                             style="border-color:#f1f1f1">
+                        <section class="post_featured">
+                            {% if post.preview_pic %}
+                                <div class="post_thumb" data-image="images/blog_1.jpg"
+                                     data-title="Analytics: Etiam in finibus felis amet.">
+                                    <img alt="" src="{{ post.preview_pic.url }}">
+                                </div>
+                            {% else %}
+                            {% endif %}
+                        </section>
+                        <section class="post_content clearfix">
+                            <h3 class="post_title">
+                                <a href="http://127.0.0.1:8000/post/{{ post.id }}">
+                                    <span class="post_icon icon-book-open"></span>{{ post.title|safe }}
+                                </a>
+                            </h3>
+                            <div class="post_info">
+                           <span class="post_info_item post_info_posted">
+                               <a href="single-post.html" class="post_info_date  updated"
+                                  content="2016-08-24 14:27:14">{{ post.get_date }}</a>
+                           </span>
+                                <span class="post_info_item post_info_posted_by vcard"> by
+                                <a href="single-team.html"
+                                   class="post_info_author">{{ post.author.first_name }} {{ post.author.last_name }}</a>
+                            </span>
+                                <span class="post_info_item post_info_tags">in
+                                    {% for tag in tags %}
+                                        <a href="http://127.0.0.1:8000/tag={{ tag.name }}"
+                                           class="category_link">{{ tag.name }}</a>
+                                    {% endfor %}
+                           </span>
+                                <span class="post_info_item post_info_counters">
+                               <span class="post_counters_item post_counters_views icon-eye-1" title="Views - 314">
+                                   <span class="post_counters_number">{{ post.post_views }}</span>
+                               </span>
+                                   <a data-id="{{ post.pk }}" data-type="post" data-action="like" title="Нравится"
+                                      id='like-btn'
+                                      class="post_counters_item post_counters_likes icon-heart enabled inited"
+                                      title="Like" href="#" data-postid="375" data-likes="4" data-title-like="Like"
+                                      data-title-dislike="Dislike">
+                                       <span class="post_counters_number"
+                                             data-count="like">{{ post.votes.likes.count }}</span>
+                                   </a>
+
+                               <a class="post_counters_item post_counters_comments icon-comment-1" title="Comments - 3"
+                                  href="#comments">
+                                   <span class="post_counters_number">{% with comments.count as total_comments %}
+                                       {{ total_comments }}
+                                   {% endwith %}
+                                   </span>
+                               </a>
+                           </span>
+                            </div>
+                            <div class="vc_row wpb_row vc_row-fluid">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+                                            <div class="wpb_text_column wpb_content_element">
+                                                <div class="wpb_wrapper">
+                                                    <div class="wrapped-text">
+                                                        <p>
+                                                            {{ post.description | safe }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="http://127.0.0.1:8000/post/{{ post.id }}/"
+                               class="sc_button sc_button_square sc_button_style_filled sc_button_size_small">Read
+                                more</a>
+                        </section>
+                        <section class="related_wrap related_wrap_empty"></section>
+                    </article>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+            {% if results_users %}
+                {% for user in results_users %}
+                    <section class="post_author author vcard">
+                        <div>
+                            <div class="post_author_avatar" style="height: 90px; width: 90px;">
+                                <img src="{{ user.avatar.url }}" style="height: 90px; width: 90px;"
+                                     class="avatar user-1-avatar avatar-80 photo" alt="" width="95" height="95">
+
+                            </div>
+                            <h6 class="post_author_title">About
+                                <span>
+                             <a style="color: #1ebeb4" href="http://127.0.0.1:8000/profile/dge{{ user.id }}du/"
+                                class="fn">{{ user.first_name }} {{ user.last_name }}</a>
+                         </span>
+                            </h6>
+                            <h6>Email: {{ user.email }}</h6>
+                            <h6>
+                                Joined us at: {{ user.created_at }}
+                            </h6>
+                            <h6>
+                                Last seen at: {{ user.last_login_at }}
+                            </h6>
+
+                            <div class="post_author_info">
+                                {{ user.about }}
+                            </div>
+                        </div>
+                    </section>
+                {% endfor %}
+            {% else %}
+            {% endif %}
+        {% else %}
+        {% endif %}
+        <a href="#" class="scroll_to_top icon-up" title="Scroll to top"></a>
+    </div>
+    </body>
+    <script src="{% static 'js/test2.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/postList.js' %}" type="text/javascript"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
