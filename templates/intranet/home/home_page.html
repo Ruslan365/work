@@ -131,7 +131,7 @@
                     </article>
                 {% endblock content %}
             </div>
-            <div class="sidebar_wrap sidebar widget_area scheme_original" role="complementary" style="width: 410px;">
+            <div class="sidebar_wrap sidebar widget_area scheme_original" role="complementary" style="width: 410px;" id="sidebar_wrap">
                 <div class="sidebar_inner widget_area_inner sidebar_widget_area" style="position: static; top: auto;">
                     <aside class="widget_number_1 widget widget_birthdays">
                         <h5 class="widget_title">Upcoming Birthday</h5>
@@ -257,17 +257,18 @@
         if ($('.sidebar_inner').is(':visible'))
         {
             $('.sidebar_inner').hide(200);
-            $('.sidebar').hide(200);
+            $('#sidebar_wrap').hide(200);
             $('.content_wrap').css("max-width", "calc(84vw)");
             $('.content_wrap').css("width", "calc(84vw)");
             $(this).toggleClass('icon-open');
         } else
         {
-            $('.sidebar').show(200);
+            $('#sidebar_wrap').show(200);
             $('.sidebar_inner').show(200);
+            $('#sidebar_wrap').css("display", "table-cell");
             $(this).removeClass('icon-open');
-            $('.content_wrap').css("width", "calc(84vw - 410px)");
-            $('.content_wrap').css("max-width", "calc(84vw - 410px)");
+            $('.content_wrap').css("width", "calc(84vw - 25vw)");
+            $('.content_wrap').css("max-width", "calc(84vw - 25vw)");
 
         }
     });

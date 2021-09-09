@@ -121,38 +121,16 @@ input[type="submit"], input[type="button"], button, .sc_button {
     box-shadow: none !important
 }
 
-.page_content_wrap .sidebar_wrap {
-    padding: 0;
-    z-index: 1;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 0 3px 3px 0;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1)
+
+.sidebar{
+    display: table-cell;
 }
 
-.menu_main_wrap, .content_wrap, .sidebar_wrap {
-    display: table-cell;
-    vertical-align: top;
-    box-sizing: border-box;
-    float: none;
-    display: table-cell;
-    vertical-align: top;
-    box-sizing: border-box
-}
 
 .body_type_2 .sidebar.widget_area .sidebar_inner {
     padding-top: 0
 }
 
-.top_panel_wrap .sidebar_wrap, .page_content_wrap .sidebar_wrap .sidebar_inner {
-    width: 410px
-}
-
-.page_content_wrap .sidebar_wrap .sidebar_inner {
-    overflow: hidden;
-    padding: 50px 3.57em;
-    transition: margin-right 0.3s ease 0s
-}
 
 .content, .sidebar, .sidebar_inner {
     -webkit-box-sizing: border-box;
@@ -414,9 +392,7 @@ figure, .wp_caption_overlay .wp_caption {
     width: 920px
 }
 
-h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, address {
-    margin: 0
-}
+
 
 .footer_wrap .sc_list .sc_list_icon::before {
     font-size: 1.17em
@@ -1109,15 +1085,7 @@ strong {
     word-break: break-all
 }
 
-.page_content_wrap .content_wrap {
-    width: 1052px;
-    max-width: 1052px
-}
->>>>>>> a486074a795e86cc33c0153667db5f7c02851f56
 
-.sidebar_wrap {
-    max-width: 410px
-}
 
 #post-form > p > [id^=id_]:focus, .summernote-div {
     border-color: #1ebeb4

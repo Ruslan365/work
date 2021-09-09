@@ -172,21 +172,9 @@ h5 {
     margin-top: 1.5em;
 }
 
-.widget_area ul li {
-    position: relative;
-}
 
 .post_item_with_thumb{
     margin-top: 1.7em;
-}
-
-.sc_list_style_iconed li .sc_list_icon {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1em;
-    display: inline-block;
-    text-align: center;
 }
 
 

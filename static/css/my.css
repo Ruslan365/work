@@ -188,8 +188,8 @@ body {
 
 .closebtn {
     position: absolute;
-    top: 400px;
-    right: 450px;
+    top: 45vh;
+    right: 17%;
     font-size: 30px;
     cursor: pointer;
     color: white;
@@ -259,14 +259,14 @@ body {
 }
 
 .top_panel_controls {
-    width: 410px;
+    width: 25vw;
     height: 36px;
     z-index: 1;
     display: table-cell;
 }
 
 .content_wrap_head {
-    width: calc(89vw - 410px);
+    width: calc(89vw - 25vw);
 }
 
 .content_wrap {
@@ -280,8 +280,8 @@ body {
     display: table-cell;
     vertical-align: top;
     box-sizing: border-box;
-    width: calc(84vw - 410px);
-    max-width: calc(84vw - 410px);
+    width: calc(84vw - 25vw);
+    max-width: calc(84vw - 25vw);
 }
 .pushy_button{
     vertical-align: middle;
@@ -297,7 +297,7 @@ body {
 
 .sidebar_wrap {
     padding-left: 3.57em;
-    max-width: 410px;
+    max-width: 25vw;
     z-index: 1;
 }
 
@@ -305,7 +305,6 @@ body {
     float: none;
     display: table-cell;
     vertical-align: top;
-    box-sizing: border-box;
 }
 
 img {
@@ -411,7 +410,7 @@ h6 a {
 }
 
 .top_panel_wrap .page_content_wrap .sidebar_wrap .sidebar_inner {
-    width: 410px;
+    width: 25vw;
 }
 
 .top_panel_wrap .sidebar_wrap {
@@ -608,7 +607,7 @@ html, body {
 
 
 .content_wrap_head {
-    width: calc(84vw - 410px + 60px) ;
+    width: calc(84vw - 25vw + 60px) ;
 }
 
 .search_wrap input[type=text] {
@@ -737,6 +736,8 @@ html, body {
 }
 
 
+
+
 .search_wrap input[type="text"] {
     padding: 15px 0 5px;
     font-size: 25px;
@@ -762,7 +763,7 @@ html, body {
         display: none;
     }
 
-    .sidebar_wrap {
+    #sidebar_wrap {
         display: none;
     }
     .content_wrap {
@@ -778,10 +779,12 @@ html, body {
         display: none;
     }
 
-    .sidebar_wrap {
-        display: none !important;
+    #sidebar_wrap {
+        display: none;
     }
-
+    #query{
+        font-size: 13px;
+    }
     .content_wrap {
         width: 100%;
     }
@@ -809,3 +812,32 @@ html, body {
     }
 
 }
+h6 {
+    margin: 0;
+}
+.footer_wrap .sc_list h6 {
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.footer_wrap .sc_list .sc_list_icon:before {
+    font-size: 1.17em;
+}.sc_list_style_iconed li .sc_list_icon {
+    position: absolute;
+    left: 0;
+
+    width: 1em;
+    display: inline-block;
+    text-align: center;
+}
+.textwidget{
+    margin-left: 25px;
+}
+.footer_wrap .sc_list p {
+    display: inline-block;
+}
+.widget_area ul {
+    list-style-type: none;
+}
+
+
