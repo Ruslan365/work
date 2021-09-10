@@ -563,7 +563,7 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, address {
 }
 
 p, ul, ol, dl, blockquote, address {
-    margin-bottom: 1.5em;
+    margin-bottom: 0.5em;
 }
 
 h2 {
@@ -763,8 +763,11 @@ textarea{
 
 img {
     max-width: 100%;
-    height: auto;
     vertical-align: top;
+}
+
+.avatar-75{
+    height: auto;
 }
 
 .date_bday {
@@ -909,8 +912,8 @@ strong {
 }
 
 .for_replies > p > textarea{
-    width: 650px;
-    max-height: 4em;
+    width: 600px;
+    max-height: 3em;
 }
 
 .post_thumb_pic {

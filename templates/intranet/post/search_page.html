@@ -23,6 +23,10 @@
                 <h1 class="page_title"></h1>
             </div>
         </div>
+    <div style="font-size: 2em; text-align: center;margin-bottom: 50px;">
+        Found {{posts_counted}} post{{ posts_counted|pluralize }} and
+         {{users_counted}} User{{ users_counted|pluralize }}
+    </div>
         {% if results_posts or results_users %}
             {% if results_posts %}
                 {% for post in results_posts %}
@@ -137,10 +141,8 @@
                     </section>
                 {% endfor %}
             {% else %}
-                <div class="nothing">No users found</div>
             {% endif %}
         {% else %}
-            <div class="nothing">Nothing found</div>
         {% endif %}
         <a href="#" class="scroll_to_top icon-up" title="Scroll to top"></a>
     </div>

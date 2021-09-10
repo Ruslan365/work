@@ -152,12 +152,16 @@ def post_search(request):
                 all_posts = all_posts & Post.objects.filter(
                     Q(title__icontains=f"{search_word}") | Q(body__icontains=f"{search_word}") | Q(
                         description__icontains=f"{search_word}"))
+            posts_counted = all_posts.count()
+            users_counted = all_users.count()
             return render(
                 request,
                 "intranet/post/search_page.html",
                 {
                     "form": form,
                     "query": search_query,
+                    "posts_counted":posts_counted,
+                    "users_counted": users_counted,
                     "results_posts": all_posts[0:5:-1],
                     "results_users": all_users[:5],
                     "birthdays": queryset,

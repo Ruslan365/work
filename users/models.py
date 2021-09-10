@@ -51,6 +51,13 @@ class UserManager(BaseUserManager):
             )
 
 
+class SocialMedia(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    link = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return f"User {self.name}"
+
 class User(AbstractUser):
     username = None
     avatar = models.ImageField(
@@ -71,12 +78,13 @@ class User(AbstractUser):
     twitter_id = models.CharField('https://twitter.com/', max_length=255, blank=True, null=True)
     facebook_id = models.CharField('https://facebook/public/', max_length=255, blank=True, null=True)
     objects = UserManager()
+    # social_media = models.ManyToManyField(SocialMedia, related_name="social_medias", blank=True)
 
-    def image_thumb(self):
-        return '<img src="{}" width="80"/>'.format(self.avatar.url)
-
-    image_thumb.allow_tags = True
 
     def __str__(self):
         return f"User {self.email}"
+
+
+    def age(self):
+        return  date.today().year - self.birth_date.year + 1
 

@@ -6,8 +6,8 @@ from django.contrib.contenttypes.models import ContentType
 from users.models import User
 from django.db.models import Sum
 
-class Tag(models.Model):
 
+class Tag(models.Model):
     name = models.CharField(max_length=30, default="")
 
 

@@ -99,14 +99,14 @@
                         <div class="sc_socials sc_socials_size_small sc_socials_share sc_socials_dir_horizontal inited">
                            <span class="share_caption">Share:</span>
                            <div class="sc_socials_item social_item_popup">
-                               <a href="https://twitter.com/share?url=https://evileg.com/ru/{{ article.get_absolute_url }}"
+                               <a href="https://twitter.com/share?url=http://127.0.0.1:8000/post/{{post.id}}/"
                                 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
                                 target="_blank" rel="nofollow">
                                 <img src="../../../media/social_media/twitter.png">
                                 </a>
                            </div>
                            <div class="sc_socials_item social_item_popup">
-                               <a href="https://www.facebook.com/sharer/sharer.php?u=https://evileg.com/ru/{{ article.get_absolute_url }}"
+                               <a href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/post/{{post.id}}/"
                                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
                                target="_blank" rel="nofollow">
                                 <img src="../../../media/social_media/facebook.png">
@@ -170,8 +170,17 @@
                                     <span class="comment_author">{{ comment.author.first_name}} {{comment.author.last_name }}</span>
                                     <span class="comment_date"><span class="comment_date_value">{{ comment.get_date}}</span>
                                     </span>
-                                    <span class="comment_time">2:35 pm</span>
-                                       <a rel="nofollow" class="comment-reply-link replybutton" style=" color: #ee5744;
+                                    <span class="comment_time">{{comment.get_time}}</span>
+
+                                 </div>
+                                 <div class="comment_text_wrap">
+                                    <div class="comment_text">
+                                       <p>
+                                           {{ comment.body}}
+                                       </p>
+                                    </div>
+                                 </div>
+                                  <a rel="nofollow" class="comment-reply-link replybutton" style=" color: #ee5744;
     font-size: 12px; cursor: pointer;"  data-commentbox="panel{{ comment.id }}"  aria-label="Reply to Evonne Amador">Reply</a>
                                         <div class="replybox" style="display:none" id="panel{{ comment.id }}">
                                             <form action="http://127.0.0.1:8000/post/{{ post.id}}/" method="post" id="commentform" class="reply-form" >
@@ -183,14 +192,6 @@
                                             </form>
 
                                         </div>
-                                 </div>
-                                 <div class="comment_text_wrap">
-                                    <div class="comment_text">
-                                       <p>
-                                           {{ comment.body}}
-                                       </p>
-                                    </div>
-                                 </div>
                               </div>
                                {% for reply in comment.replies.all %}
                                 <ul class="children" style="list-style-type:none; padding-left: 40px;">
@@ -205,7 +206,14 @@
                                               <span class="comment_date_value">{{ reply.get_date }}</span>
                                           </span>
                                           <span class="comment_time">2:36 pm</span>
-                                           <a rel="nofollow" class="comment-reply-link replybutton" style=" color: #ee5744;
+
+                                       </div>
+                                       <div class="comment_text_wrap">
+                                          <div class="comment_text">
+                                             <p>
+                                                 {{ reply.body}}
+                                             </p>
+                                              <a rel="nofollow" class="comment-reply-link replybutton" style=" color: #ee5744;
     font-size: 12px; cursor: pointer;"  data-commentbox="panel{{ reply.id }}"  aria-label="Reply to Evonne Amador">Reply</a>
                                         <div class="replybox" style="display:none" id="panel{{ reply.id }}">
                                             <form action="http://127.0.0.1:8000/post/{{ post.id}}/" method="post" id="commentform" class="comment-form sc_input_hover_default for_replies">
@@ -216,12 +224,6 @@
                                                 <input name="submit" type="submit" id="send_reply" value="Reply">
                                             </form>
                                         </div>
-                                       </div>
-                                       <div class="comment_text_wrap">
-                                          <div class="comment_text">
-                                             <p>
-                                                 {{ reply.body}}
-                                             </p>
                                           </div>
                                        </div>
                                     </div>

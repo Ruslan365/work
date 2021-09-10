@@ -115,6 +115,24 @@
     content: '\e808';
 }
 
+@font-face {
+    font-family: 'PJBold'; /*a name to be used later*/
+    src: url('../../static/css/fonts/PJMasks-Bold.ttf'); /*URL to font*/
+}
+
+.logo-title{
+    font-family: PJBold;
+    color: white;
+    font-size: 3em;
+    /*overflow: hidden;*/
+}
+
+.non{
+    vertical-align: bottom;
+    height: 100%;
+    max-width: 280px;
+    display: block;
+}
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, input, textarea, button, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, address, section, video, audio {
     font-family: inherit;
@@ -146,7 +164,10 @@ h5 {
     font-weight: 700;
 }
 
-/*.post_thumb_bday{}*/
+.post_thumb_bday{
+    float: left;
+    margin-right: 10px;
+}
 
 
 .scheme_original.footer_wrap .sc_list_style_iconed li::before, .scheme_original.footer_wrap .sc_list_style_iconed .sc_list_icon {
@@ -735,8 +756,9 @@ html, body {
     padding-left: 90px;
 }
 
-
-
+.widget_birthdays_inner{
+    min-height: 20px;
+}
 
 .search_wrap input[type="text"] {
     padding: 15px 0 5px;

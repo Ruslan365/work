@@ -122,6 +122,7 @@ input[type="submit"], input[type="button"], button, .sc_button {
 }
 
 
+
 .sidebar{
     display: table-cell;
 }
@@ -132,11 +133,6 @@ input[type="submit"], input[type="button"], button, .sc_button {
 }
 
 
-.content, .sidebar, .sidebar_inner {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
-}
 
 .sidebar_outer aside, .sidebar aside + aside {
     margin-top: 2.4em;
@@ -391,7 +387,6 @@ figure, .wp_caption_overlay .wp_caption {
     background-color: #E9E9E9;
     width: 920px
 }
-
 
 
 .footer_wrap .sc_list .sc_list_icon::before {
@@ -972,10 +967,12 @@ h3 a {
 }
 
 .title-block {
-    border-bottom: 0 solid #e6e6e6;
+
+    border-bottom: 0.5px solid #e6e6e6;
     font-size: 30px;
     margin-bottom: 30px;
-    width: 150px
+    width: 150px;
+    min-height: 29px;
 }
 
 .widget_birthdays ul {
@@ -1084,7 +1081,6 @@ strong {
 .post_author_info {
     word-break: break-all
 }
-
 
 
 #post-form > p > [id^=id_]:focus, .summernote-div {
