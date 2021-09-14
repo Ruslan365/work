@@ -74,7 +74,7 @@ class Post(models.Model):
     is_published = models.CharField(max_length=1, choices=STATUS_CHOICES, default="0")
     slug = models.SlugField(max_length=250, unique_for_date="created_at", default="")
     objects = models.Manager()
-    tag = models.ManyToManyField(Tag, related_name="tags", blank=True)
+    tag = models.ManyToManyField(Tag, related_name="tags", blank=True, default="")
     votes = GenericRelation(LikeDislike, related_query_name="posts")
     post_views = models.IntegerField(default=0)
 

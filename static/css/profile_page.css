@@ -915,6 +915,21 @@ h3 a {
     border-radius: 5px
 }
 
+#id_tag {
+    border: 1px solid #e9e9e9;
+    box-shadow: 0 0 5px #e9e9e9 inset;
+    width: 701px;
+    height: 2em;
+    max-width: 701px;
+    max-height: 4em;
+    border-radius: 5px;
+}
+
+
+.errorlist{
+    display: none;
+}
+
 #myOverlay {
     height: 100%;
     width: 100%;

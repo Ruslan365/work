@@ -31,13 +31,13 @@
                             <span class="post_info_item post_info_posted_by vcard"> by
                                 <a href="single-team.html" class="post_info_author">{{ post.author.first_name }} {{ post.author.last_name }}</a>
                             </span>
-                      {% if tags %}
+                      {% if post.tag.all %}
                            <span class="post_info_item post_info_tags">in
-                               {% for tag in tags %}
+                               {% for tag in post.tag.all %}
                                    <a href = "http://127.0.0.1:8000/tag={{tag.name}}" class="category_link">{{tag.name}}</a>
                                {% endfor %}
                            </span>
-                      {% else %}
+
                       {% endif %}
                            <span class="post_info_item post_info_counters">
                                <span class="post_counters_item post_counters_views icon-eye-1" title="Views - 314">

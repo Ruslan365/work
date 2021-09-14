@@ -6,6 +6,7 @@
     <div class="content_wrap_with_title">
         <div class='title-block' style='padding-top: 40px;'><span style="padding-left: 56.69px">Profile</span></div>
         <link rel="stylesheet" type="text/css" href="{% static 'css/profile_page.css' %}">
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css"/>
         <section class="post_author author vcard">
             <div class="post_author_avatar">
                 <a href="single-team.html">
@@ -67,10 +68,10 @@
         {% else %}
         {% endif %}
         <div class='form-wrapper'>
-            <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/creator/" method="post" id="post-form">
+            <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/" method="post" id="post-form">
                 {{ post_form.as_p|safe }}
                 {% csrf_token %}
-                <a><input type="submit" value="Close" onclick="hideForm()"></a>
+                <input type="submit" value="Close" onclick="hideForm()">
                 <input type="submit" value="Create" onclick="hideForm()">
             </form>
             <div class='title-block'><span style="padding-left: 70.69px; padding-bottom: 20px;">Posts</span></div>
@@ -101,12 +102,14 @@
                                 <a href="single-team.html"
                                    class="post_info_author">{{ post.author.first_name }} {{ post.author.last_name }}</a>
                             </span>
+                        {%if post.tag.all %}
                         <span class="post_info_item post_info_tags">in
-                            {% for tag in tags %}
+                            {% for tag in post.tag.all %}
                                 <a href="http://127.0.0.1:8000/tag={{ tag.name }}"
                                    class="category_link">{{ tag.name }}</a>
                             {% endfor %}
                            </span>
+                        {%endif%}
                         <span class="post_info_item post_info_counters">
                                <span class="post_counters_item post_counters_views icon-eye-1" title="Views - 314">
                                    <span class="post_counters_number">{{ post.post_views }}</span>
@@ -150,9 +153,94 @@
             </article>
         {% endfor %}
     </div>
-    <script src="{% static 'js/test2.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/test.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/profilePage.js' %}" type="text/javascript"></script>
+<script>
+    $(function () {
+        let availableTags = [
+            {% for tag in tags %}
+                "{{ tag }}",
+            {% endfor %}
+        ];
+        let new_availableTags = [];
+
+        // define a variable to store all the selected values.
+        let selectedVal = [];
+
+        function split(val) {
+            return val.split(/,\s*/);
+        }
+
+        function extractLast(term) {
+            return split(term).pop();
+        }
+
+        // prevent the user from going behind via cursor //cursor always on last
+        $("#id_tag").on('click', (event) => {
+            event.currentTarget.setSelectionRange(-1, -1);
+        });
+
+        $("#id_tag")
+            // don't navigate away from the field on tab when selecting an item
+            .on("keydown", function (event) {
+
+                // prevent from giving space(32), delete(46), going back(37) and forward(39), delete a whole word(Ctrl + Backspace(8))
+                if (event.keyCode === 46 || event.keyCode === 37 || event.keyCode === 39 || (event.ctrlKey && event.keyCode === 8)) {
+
+                    event.preventDefault();
+
+                } else if (event.keyCode === 8) { // on pressing backspace
+
+                    let prev_val = event.currentTarget.value; //get the current input value
+                    let last_char = prev_val.charAt(prev_val.length - 1); //get the last character of value
+
+                    if (last_char === ',') {
+                        selectedVal.pop();  //delete last element only if last character is a comma(,)
+                    }
+                }
+
+                if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
+                    event.preventDefault();
+                }
+                //console.log(selectedVal);
+                new_availableTags = availableTags;  //assign the value to the new variable
+
+                selectedVal.forEach((selected) => {
+                    // only keep the values which are not selected
+                    new_availableTags = new_availableTags.filter(item => item !== selected);
+                });
+            })
+            .autocomplete({
+                max:10,
+                minLength: 0,
+                source: function (request, response) {
+                    // delegate back to autocomplete, but extract the last term
+                    response($.ui.autocomplete.filter(
+                        new_availableTags, extractLast(request.term)));
+                },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+
+                    selectedVal.push(ui.item.value);  // insert the selected value in selectedVal
+                    console.log(`selectedVal: ${selectedVal}`);
+                    var terms = split(this.value);
+                    // remove the current input
+                    terms.pop();
+                    // add the selected item
+                    terms.push(ui.item.value);
+
+                    // add placeholder to get the comma-and-space at the end
+                    terms.push("");
+                    this.value = terms.join(", ");
+                    return false;
+                }
+            });
+    });
+</script>
+
 
 {% endblock content %}
 

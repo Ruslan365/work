@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from .forms import UserForm
 from .models import User
 from django.shortcuts import render, get_object_or_404, redirect
-from posts.models import Post
+from posts.models import Post, Tag
 from posts.forms import PostForm
 
 @login_required(login_url="http://127.0.0.1:8000/accounts/login/")
@@ -17,6 +17,7 @@ def logout_view(request):
 def profile_page(request, id):
     queryset = User.objects.birthdays()
     new_post = None
+    tags = Tag.objects.all()
     user = get_object_or_404(User, id=id)
     user_posts = Post.objects.filter(author__id=id)
     recent_posts = Post.objects.filter(is_published=1)[:5:]
@@ -26,7 +27,7 @@ def profile_page(request, id):
             preview_img = post_form.cleaned_data.get("preview_pic")
             title = request.POST.get("title")
             body = request.POST.get("body")
-            tag = request.POST.get("tag")
+            tag = post_form.cleaned_data.get("tag")
             new_post = Post.objects.create(
                 author=request.user,
                 title=title,
@@ -35,9 +36,17 @@ def profile_page(request, id):
                 slug=title,
             )
             new_post.save()
+            tag = request.POST.get("tag")
             if tag:
-                for t in tag.iterator():
+                splitted_tags = tag.split(", ")
+                tags = Tag.objects.none()
+                for tag in splitted_tags:
+                    if not Tag.objects.filter(name = tag):
+                        Tag.objects.create(name = tag)
+                    tags = tags | Tag.objects.filter(name = tag)
+                for t in tags:
                     new_post.tag.add(t)
+            new_post.save()
             return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du")
     else:
         post_form = PostForm()
@@ -46,6 +55,7 @@ def profile_page(request, id):
         "intranet/user/profile.html",
         {
             "user": user,
+            "tags":tags,
             # "social_networks": social_networks,
             "user_posts": user_posts,
             "post_form": post_form,

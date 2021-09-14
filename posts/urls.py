@@ -11,7 +11,7 @@ urlpatterns = [
     path('post/<int:pk>/', post_views.post_detail, name='post_detail'),
     path("", post_views.home_page, name="home_page"),
     path('comment/<int:pk>/', post_views.comment_page, name="comment_page"),
-    path("profile/dge<id>du/creator/", post_views.post_creator, name="post_creator"),
+    # path("profile/dge<id>du/creator/", post_views.post_creator, name="post_creator"),
     path('post/<int:pk>/like/',
          login_required(post_views.VotesView.as_view(model=Post, vote_type=LikeDislike.LIKE)),
          name='post_like'),
