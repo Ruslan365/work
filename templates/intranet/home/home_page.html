@@ -48,7 +48,7 @@
                 <div class="content_wrap_head">
                     <div class="contact_logo">
                         <div class="logo">
-                            <a class="non" href="http://127.0.0.1:8000/">
+                            <a class="non" href="http://127.0.0.1:8000">
                                 <img alt='' src='../../../media/home_page_media/logo_dark.png' width='241' height='53' style="width: auto">
                                 <span class="logo-title">Dexpaland</span>
                             </a>
@@ -69,14 +69,14 @@
                                 <span class="closebtn wtg" onclick="closeSearch()" title="Close Overlay">x</span>
                                 <div class="search_form_wrap">
                                     <form method="get" class="search_form" id="search_form"
-                                          action="http://127.0.0.1:8000/search/">
+                                          action="/search/">
                                         <input type="text" placeholder="Введите имя пользователя или название поста" name="query" id='query'>
                                     </form>
                                 </div>
                             </div>
                             <button class="openBtn" onclick="openSearch()"><span class="icon-search-1"></span></button>
                             <div class="sidebar_pushy">
-                                <a class="pushy_button sc_button wtg" href="http://127.0.0.1:8000/profile/dge{{ request.user.id }}du">
+                                <a class="pushy_button sc_button wtg" href="/profile/dge{{ request.user.id }}du">
                                     <span class="icon-profile"></span>
                                 </a>
                             </div>
@@ -90,7 +90,7 @@
                 <nav class='menu_main_nav_area'>
                     <ul id="menu_main" class="menu_main_nav">
                         <li class="icon-folder menu-item current_menu_ancestor">
-                            <a class="sf_with_ul white" href="http://127.0.0.1:8000/"><span>Dashboard</span></a>
+                            <a class="sf_with_ul white" href="/"><span>Dashboard</span></a>
                         </li>
                         <li class="icon-school menu-item menu-item-has-children" style="display: block"><a
                                 class="sf_with_ul" href="/list/"><span>Blog</span></a></li>
@@ -146,7 +146,7 @@
                                                  style="border-radius: 50%;">
                                         </div>
                                         <div class="post_title_recent_posts" >
-                                            <a href="http://127.0.0.1:8000/profile/dge{{ user.id }}du"><strong>{{ user.first_name }} {{ user.last_name }}</strong></a>
+                                            <a href="/profile/dge{{ user.id }}du"><strong>{{ user.first_name }} {{ user.last_name }}</strong></a>
                                             ({{ user.age }}) <i>on</i>
                                             <span class="date">{{ user.birth_date.month| month_name }} {{ user.birth_date.day }}</span>
                                         </div>
@@ -168,14 +168,14 @@
                                 {% endif %}
                                 <div class="post_content_recent_posts">
                                     <h6 class="post_title_recent_posts">
-                                        <a href="http://127.0.0.1:8000/post/{{ post.pk }}">{{ post.title }}</a>
+                                        <a href="/post/{{ post.pk }}">{{ post.title }}</a>
                                     </h6>
                                     <div class="post_info">
                                 <span class="post_info_item post_info_posted">
                                     {{ post.get_date }}
                                 </span>
                                         <span class="post_info_item post_info_posted_by">
-                                    by <a href="http://127.0.0.1:8000/profile/dge{{ post.author.id }}du">  {{ post.author.first_name }} {{ post.author.last_name }}</a>
+                                    by <a href="/profile/dge{{ post.author.id }}du">  {{ post.author.first_name }} {{ post.author.last_name }}</a>
                                 </span>
                                     </div>
                                 </div>

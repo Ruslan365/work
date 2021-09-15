@@ -35,7 +35,6 @@ def search_call(request):
             y += 1
         event_creator(emails_dict, partydate, room)
     emails = User.objects.values_list("email", flat=True)
-    print(emails)
     return render(
         request,
         "../templates/intranet/home/conference.html",

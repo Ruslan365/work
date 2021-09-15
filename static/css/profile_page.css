@@ -1023,14 +1023,7 @@ strong {
     content: '\e80e'
 }
 
-.closebtn {
-    position: absolute;
-    top: 400px;
-    right: 450px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #fff
-}
+
 
 .search_wrap input[type="text"] {
     padding: 15px 15px 5px;

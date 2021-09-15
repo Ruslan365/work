@@ -46,5 +46,4 @@ def event_creator(attendees, event_time, room):
             token.write(creds.to_json())
     service = build('calendar', 'v3', credentials=creds)
     now = datetime.datetime.utcnow().isoformat() + 'Z'
-    event = service.events().insert(calendarId=room, body=event).execute()
-    # 'Z' indicates UTC time
+    event = service.events().insert(calendarId=room, body=event).execute() 
