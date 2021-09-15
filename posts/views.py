@@ -91,45 +91,6 @@ def home_page(request):
                   {"user": user, "recent_posts": recent_posts, "birthdays": queryset, "btninfo": btninfo})
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
-def post_creator(request, id):
-    user = request.user
-    new_post = None
-    recent_posts = Post.objects.filter(is_published=1)[:5:]
-    if request.method == "POST":
-        post_form = PostForm(data=request.POST)
-        if post_form.is_valid():
-            preview_img = post_form.cleaned_data.get("preview_pic")
-            title = request.POST.get("title")
-            body = request.POST.get("body")
-            tag = request.POST.get("tag")
-            new_post = Post.objects.create(
-                author=request.user,
-                title=title,
-                body=body,
-                is_published=1,
-                slug=title,
-            )
-            new_post.save()
-            if tag:
-                for t in tag.iterator():
-                    new_post.tag.add(t)
-            return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du")
-    else:
-        post_form = PostForm()
-
-    return render(
-        request,
-        "intranet/user/post_creator.html",
-        {
-            "user": user,
-            "post_form": post_form,
-            "recent_posts": recent_posts,
-            # "email": email,
-        },
-    )
-
-
 def post_search(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]

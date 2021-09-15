@@ -46,12 +46,6 @@ INSTALLED_APPS = [
     "vacancies",
 ]
 
-ELASTICSEARCH_DSL = {
-    "default": {
-        "hosts": "localhost:9200",
-    },
-}
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '893700026397-e53stlsu07j036v7gaajne99it05su5d.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Nfj_b8NLjuSBtd0zQsbbPa5M'
 MIDDLEWARE = [

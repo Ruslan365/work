@@ -115,18 +115,6 @@
     content: '\e808';
 }
 
-@font-face {
-    font-family: 'PJBold'; /*a name to be used later*/
-    src: url('../../static/css/fonts/PJMasks-Bold.ttf'); /*URL to font*/
-}
-
-.logo-title{
-    font-family: PJBold;
-    color: white;
-    font-size: 3em;
-    /*overflow: hidden;*/
-}
-
 .non{
     vertical-align: bottom;
     height: 100%;

@@ -27,6 +27,9 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     body = forms.CharField(widget=SummernoteWidget())
     title = forms.TextInput()
+
+    tag = forms.CharField(max_length=255)
+
     # description = forms.CharField(widget=SummernoteWidget())
     class Meta:
         model = Post
