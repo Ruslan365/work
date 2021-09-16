@@ -1,0 +1,31 @@
+{#{% extends 'intranet/home/home_page.html' %}#}
+
+{% block content %}
+    <div>
+        <div>
+            <div>
+                {% if poll.active %}
+                    <h3>Result for: {{ poll.text }}</h3>
+                {% else %}
+                    <h3>"{{ poll.text }}" Has Ended Polling !</h3>
+                {% endif %}
+                <h3>Total: {{ poll.get_vote_count }} votes</h3>
+                <!-- progress bar -->
+                {% for choice in poll.get_result_dict %}
+                    {{ choice.text|truncatewords:2 }}-{{ choice.percentage|floatformat }}%</b>
+                {% endfor %}
+            </div>
+            <ul>
+                {% for choice in poll.choice_set.all %}
+                    <li>
+                        {{ choice.choice_text }}
+                        <span>{{ choice.get_vote_count }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'polls:list' %}" role="button">Back To Polls</a>
+        </div>
+
+    </div>
+    </div>
+{% endblock content %}

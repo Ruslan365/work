@@ -1,0 +1,22 @@
+version: '3.6'
+
+services:
+  db:
+    image: "postgres:11"
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: always
+  web:
+    build: .
+    command: python3.6 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/work-rus_rework
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+volumes:
+  postgres_data:
