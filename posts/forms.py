@@ -4,13 +4,11 @@ from django_summernote.widgets import SummernoteWidget
 from django.utils.safestring import mark_safe
 
 
-
 class PictureWidget(forms.widgets.FileInput):
     def render(self, name, value, attrs=None, **kwargs):
         input_html = super().render(name, value, attrs=None, **kwargs)
         img_html = mark_safe(f'<img height = "200px" width = "200px" src="{value.url}"/><br>')
         return f"{img_html}{input_html}"
-
 
 
 class CommentForm(forms.ModelForm):
@@ -28,7 +26,8 @@ class PostForm(forms.ModelForm):
     body = forms.CharField(widget=SummernoteWidget())
     title = forms.TextInput()
 
-    tag = forms.CharField(max_length=255)
+    tag = forms.CharField(max_length=255, required=False)
+
 
     # description = forms.CharField(widget=SummernoteWidget())
     class Meta:

@@ -51,13 +51,6 @@ class UserManager(BaseUserManager):
             )
 
 
-class SocialMedia(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
-    link = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return f"User {self.name}"
-
 class User(AbstractUser):
     username = None
     avatar = models.ImageField(
