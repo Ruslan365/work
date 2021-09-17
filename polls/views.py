@@ -8,7 +8,7 @@ from .forms import PollAddForm, EditPollForm, ChoiceAddForm
 from django.http import HttpResponse
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def polls_list(request):
     all_polls = Poll.objects.all()
     search_term = ''
@@ -40,7 +40,7 @@ def polls_list(request):
     return render(request, '../templates/intranet/polls/polls_list.html', context)
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def polls_add(request):
     if request.user.has_perm('polls.add_poll'):
         if request.method == 'POST':
@@ -68,7 +68,7 @@ def polls_add(request):
         return HttpResponse("Sorry but you don't have permission to do that!")
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def polls_edit(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     if request.user != poll.owner:
@@ -88,7 +88,7 @@ def polls_edit(request, poll_id):
     return render(request, "../templates/intranet/polls/poll_edit.html", {'form': form, 'poll': poll})
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def polls_delete(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     if request.user != poll.owner:
@@ -99,7 +99,7 @@ def polls_delete(request, poll_id):
     return redirect("polls:list")
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def add_choice(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     if request.user != poll.owner:
@@ -122,7 +122,7 @@ def add_choice(request, poll_id):
     return render(request, '../templates/intranet/polls/add_choice.html', context)
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def choice_edit(request, choice_id):
     choice = get_object_or_404(Choice, pk=choice_id)
     poll = get_object_or_404(Poll, pk=choice.poll.id)
@@ -146,7 +146,7 @@ def choice_edit(request, choice_id):
     return render(request, '../templates/intranet/polls/add_choice.html', context)
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def choice_delete(request, choice_id):
     choice = get_object_or_404(Choice, pk=choice_id)
     poll = get_object_or_404(Poll, pk=choice.poll.id)
@@ -174,7 +174,7 @@ def poll_detail(request, poll_id):
     return render(request, '../templates/intranet/polls/poll_detail.html', context)
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def poll_vote(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     choice_id = request.POST.get('choice')
@@ -210,7 +210,7 @@ def endpoll(request, poll_id):
         return render(request, '../templates/intranet/polls/poll_result.html', {'poll': poll})
 
 
-@login_required(login_url="http://127.0.0.1:8000/accounts/login/")
+@login_required(login_url="http://127.0.0.1:8000/login/")
 def poll_rez(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
     return render(request, '../templates/intranet/polls/poll_result.html', {'poll': poll})
