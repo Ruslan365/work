@@ -69,7 +69,6 @@ A{
 }
 
 .content_wrap{
-    width: 1040px;
     z-index: 2;
     position: relative;
     background-color: #fff;
@@ -97,7 +96,6 @@ A{
 
 .top_panel_wrap_inner, .page_content_wrap, .footer_wrap {
     padding-right: 12px;
-    width:1572px;
 }
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, blockquote, address {
@@ -666,14 +664,7 @@ button, input, optgroup, select, textarea {
     /*display: block;*/
 }
 
-.closebtn {
-  position: absolute;
-  top: 300px;
-  right: 450px;
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-}
+
 
 .wpb_wrapper{
     word-break: break-word;
@@ -810,14 +801,6 @@ strong {
     background-color: rgba(0,0,0, 0.9);
 }
 
-.closebtn {
-    position: absolute;
-    top: 400px;
-    right: 450px;
-    font-size: 30px;
-    cursor: pointer;
-    color: white;
-}
 
 .search_form_wrap {
     position: relative;
@@ -830,18 +813,6 @@ strong {
 
 .search_form_wrap {
     text-align: center;
-}
-
-.search_wrap input[type="text"] {
-    padding: 15px;
-    font-size: 25px;
-    border: none;
-    float: left;
-    width: 80%;
-    background-color: rgba(0,0,0, 0);
-    color: white;
-    padding-bottom: 5px;
-    border-bottom: 2px solid white;
 }
 
 .search_submit {
