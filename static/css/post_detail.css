@@ -911,11 +911,6 @@ strong {
     width: 94.35px;
 }
 
-.for_replies > p > textarea{
-    width: 600px;
-    max-height: 3em;
-}
-
 .post_thumb_pic {
     float: left;
     width: 4.71em;
