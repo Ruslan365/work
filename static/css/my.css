@@ -805,6 +805,9 @@ html, body {
 }
 
 @media (max-width: 767px) {
+    .sidebar_wrap{
+        padding-left: 0;
+    }
 
     .columns_wrap > [class*="column-"],
     .columns_wrap > [class*="column-"] {
@@ -820,8 +823,14 @@ html, body {
     .footer_wrap_inner {
         margin-left: 0;
     }
-
+    .none{
+        display: none !important;
+    }
+.content_wrap_head {
+    width: calc(84vw - 40vw + 60px);
 }
+}
+
 h6 {
     margin: 0;
 }
