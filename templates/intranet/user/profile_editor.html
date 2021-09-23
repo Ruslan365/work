@@ -1,12 +1,12 @@
-{% extends "intranet/user/profile.html" %}
+{% extends "intranet/home/home_page.html" %}
 {% load static %}
 <head>
-    <link rel="stylesheet" type="text/css" href="{% static "css/profile_editor.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_editor.css' %}">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/profile_editor.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile_editor.css' %}">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
     <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/editor/"  method="post" enctype="multipart/form-data" class = "user_editor_form">
     <h2 class = "edit_profile">Edit profile</h2>

@@ -89,11 +89,11 @@ WSGI_APPLICATION = "intranet.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "postgres",
-        "USER": "postgres",
+        "NAME": "intranetdb",
+        "USER": "coolan",
         "PASSWORD": "1",
-        "HOST": "db",
-        "PORT": "5432",
+        "HOST": "localhost",
+        "PORT": "",
     }
 }
 

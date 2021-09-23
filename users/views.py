@@ -66,6 +66,8 @@ def profile_page(request, id):
 
 @login_required(login_url="http://127.0.0.1:8000/login/")
 def profile_editor(request, id):
+    recent_posts = Post.objects.filter(is_published=1)[:5:]
+    queryset = User.objects.birthdays()
     user = User.objects.get(id=id)
     form = UserForm(instance=user)
     if request.method == "POST":
@@ -86,7 +88,10 @@ def profile_editor(request, id):
     return render(
         request,
         "intranet/user/profile_editor.html",
-        {"form": form, "avatar": user.avatar},
+        {"form": form, "avatar": user.avatar,
+         "recent_posts":recent_posts,
+         "birthdays": queryset,
+         },
     )
 
 
