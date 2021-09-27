@@ -309,13 +309,17 @@ body {
     max-width: 25vw;
     z-index: 1;
 }
-
+.icon-menu{
+    max-height: 35px;
+}
 .content_wrap, .sidebar_wrap {
     float: none;
     display: table-cell;
     vertical-align: top;
 }
-
+.tableclass{
+    display: table-cell;
+}
 img {
     max-width: 100%;
     vertical-align: top;
@@ -747,6 +751,10 @@ html, body {
 .widget_birthdays_inner{
     min-height: 20px;
 }
+.content_mobile{
+    max-width: 84vw;
+    width: 84vw;
+}
 
 .search_wrap input[type="text"] {
     padding: 15px 0 5px;
@@ -805,6 +813,10 @@ html, body {
 }
 
 @media (max-width: 767px) {
+    .content_mobile{
+        width: 59vw;
+        max-width: 59vw;
+    }
     .sidebar_wrap{
         padding-left: 0;
     }
@@ -859,4 +871,12 @@ h6 {
     list-style-type: none;
 }
 
-
+.icon-phone-circled{
+    padding-top: 13px;
+}
+.icon-pencil-neg{
+    padding-top: 13px;
+}
+.top_panel_wrap{
+    width: 100%;
+}

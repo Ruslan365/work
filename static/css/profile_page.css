@@ -254,29 +254,8 @@ figure, .wp_caption_overlay .wp_caption {
     color: #1ebeb4
 }
 
-.top_panel_wrap_inner, .page_content_wrap, .footer_wrap {
-    padding-right: 12px;
-}
 
-.footer_wrap {
-    margin-top: 0;
-    max-width: 1906px;
-    padding: 0 82px 0 12px;
-    box-sizing: border-box
-}
 
-.footer_wrap_inner {
-    padding: 4.28em 4.28em 0;
-    margin-left: 110px;
-    box-sizing: border-box;
-    position: relative
-}
-
-.footer_wrap_inner .content_wrap {
-    max-width: 100%;
-    display: block;
-    margin-right: 410px
-}
 
 .row, .columns_wrap {
     margin-left: 0;
@@ -288,33 +267,9 @@ figure, .wp_caption_overlay .wp_caption {
     display: table
 }
 
-.footer_wrap aside {
-    margin-bottom: 1.5em;
-    margin-right: -3px;
-    font-size: 0.928em;
-    font-weight: 400;
-    line-height: 1.65em
-}
-
 .column-1_3, .column-2_6, .column-3_9, .column-4_12 {
     width: 33.33333333%;
     margin-right: -3px
-}
-
-.footer_wrap.widget_area .widget_title {
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-weight: 900;
-    margin-bottom: 1.45em
-}
-
-.widget_area .widget_title {
-    margin-top: 0;
-    margin-bottom: 1.05em
-}
-
-.footer_wrap .textwidget, .footer_wrap .widget_area_inner ul li a {
-    font-weight: 500
 }
 
 .scheme_original .body_type_2 .widget_area_inner aside:nth-child(2n+3), .scheme_original .body_type_2 .widget_area_inner aside + aside {
@@ -363,15 +318,9 @@ figure, .wp_caption_overlay .wp_caption {
     padding-left: 0
 }
 
-.content_wrap_footer {
-    background-color: #E9E9E9;
-    width: 920px
-}
 
 
-.footer_wrap .sc_list .sc_list_icon::before {
-    font-size: 1.17em
-}
+
 
 .scheme_original .widget_area_inner {
     color: #8a8d90
@@ -398,13 +347,9 @@ figure, .wp_caption_overlay .wp_caption {
     padding-left: 0
 }
 
-.footer_wrap ul.sc_list li + li, .footer_wrap ol.sc_list li + li {
-    margin-top: 1.45em
-}
 
-.footer_wrap .sc_list_style_iconed li {
-    padding: 0 0 0 1.8em
-}
+
+
 
 .sc_list_style_iconed li {
     padding: 0 0 0 1.5em;
@@ -416,16 +361,6 @@ ul > li, ol > li, dl > dd {
     margin-bottom: 0.5em
 }
 
-.footer_wrap .sc_list h6 {
-    display: inline-block;
-    font-weight: 600;
-    margin-bottom: 0
-}
-
-.scheme_original.footer_wrap .sc_list_style_iconed li::before, .scheme_original.footer_wrap .sc_list_style_iconed .sc_list_icon {
-    color: #191315
-}
-
 a, a:hover, a:focus, a:active {
     outline: 0
 }
@@ -434,23 +369,12 @@ a, a:hover, a:focus, a:active {
     outline: 0
 }
 
-.scheme_original .footer_wrap .widget_area_inner ul li a {
-    color: #8a8d90
-}
-
 a, button {
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -ms-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s
-}
-
-
-.footer_wrap_inner .content_wrap_footer {
-    max-width: 100%;
-    display: block;
-    margin-right: 410px
 }
 
 .sidebar .widget_nav_menu ul li {

@@ -23,7 +23,7 @@ table tr:first-child {
 .table {
     border-collapse: separate;
     text-indent: initial;
-    border-spacing: 0px;
+    border-spacing: 0;
 }
 
 .sc_vacancies .employment span {
@@ -68,4 +68,21 @@ table a {
 }
 .menu_main_nav > li::before {
     color: #ffffff;
+}
+@media (max-width: 400px) {
+.page_title {
+    font-size: 1.8em;
+    line-height: 0.77em;
+    padding-bottom: 22px;
+}
+.sc_vacancies.sc_table table td {
+    font-size: 0.64em;
+    padding: 0.6em 1.36em;
+}
+.sc_vacancies .employment span {
+    font-size: 0.6em;
+    font-weight: 384;
+    padding: 1.6px 4.48px;
+    border-radius: 3.2px;
+}
 }

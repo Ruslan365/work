@@ -17,11 +17,7 @@ h1 {
     color: #8a8d90;
 }
 
-.wpb_wrapper{
-    font-size: 1.285em;
-    line-height: 1.45em;
-    margin-bottom: 1.35em;
-}
+
 
 .post_featured {
     text-align: center;
@@ -39,7 +35,7 @@ h1 {
     font-weight: 500;
     margin-bottom: 2.4em;
 }
-p {width: 100%;
+p {
 word-break: break-all}
 
 article.post_item_single {
@@ -393,9 +389,7 @@ h2 {
     color: #909090;
 }
 
-p, ul, ol, dl, blockquote, address {
-    margin-bottom: 1.5em;
-}
+
 
 .comments_wrap .comments_field {
     margin-bottom: 10px;

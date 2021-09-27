@@ -133,7 +133,7 @@
                 {% endblock content %}
             </div>
             <div class="sidebar_wrap sidebar widget_area scheme_original" role="complementary" style="width: 410px;" id="sidebar_wrap">
-                <div class="sidebar_inner widget_area_inner sidebar_widget_area" style="position: static; top: auto;">
+                <div class=" widget_area_inner sidebar_widget_area" style="position: static; top: auto;">
                     <aside class="widget_number_1 widget widget_birthdays">
                         <h5 class="widget_title">Upcoming Birthday</h5>
                         <div class="widget_birthdays_inner">
@@ -190,7 +190,7 @@
                         <div class="columns_wrap">
                             <aside class="widget_number_1 column-1_3 widget widget_text">
                                 <h5 class="widget_title">Micro office group</h5>
-                                <div class="textwidget">
+                                <div>
                                     <p>Nam finibus sapien et sem venenatis vulputate. Nunc bibendum tincidunt egestas.
                                         Integer sollicitudin aliquet justo vel posuere. </p>
                                     <p>Praesent fermentum lorem nisi, at posuere mi bibendum eget.</p>
@@ -256,18 +256,17 @@
     $('.icon-right-open').on('click', function () {
         if ($('.sidebar_inner').is(':visible'))
         {
-            $('.sidebar_inner').hide(200);
-            $('#sidebar_wrap').hide(200);
-            $('.content_wrap').css("max-width", "calc(84vw)");
-            $('.content_wrap').css("width", "calc(84vw)");
+            //$('.frame').css('width', '700px')
+            $('.sidebar_inner , #sidebar_wrap').hide(200);
+            $('.content_wrap').toggleClass('content_mobile');
             $(this).toggleClass('icon-open');
         } else                                  
         {
-            $('.sidebar_inner').show(200);
-            $('#sidebar_wrap').css("display", "table-cell");
+
+            $('.sidebar_inner , #sidebar_wrap').show(500);
+            //$('.frame').css('width', '372px')
             $(this).removeClass('icon-open');
-            $('.content_wrap').css("width", "calc(84vw - 25vw)");
-            $('.content_wrap').css("max-width", "calc(84vw - 25vw)");
+            $('.content_wrap').removeClass('content_mobile');
 
         }
     });
@@ -275,13 +274,10 @@
 <script>
     $('.menu_pushy').on('click', function () {
         if ($('#menu_main').is(':visible')) {
-            $(' .menu_main_wrap ').hide(100);
-            $(' #menu_main ').hide(100);
+            $(' .menu_main_wrap, #menu_main ').hide(100);
         } else {
-            $(' .menu_main_wrap ').css('display', 'table-cell');
-            $(' #menu_main ').show(100);
-            $(' .menu_main_nav_area ').show(100);
-            $(' .menu_main_wrap ').show(100);
+            $(' .menu_main_wrap ').css('display', 'table-cell')
+            $(' #menu_main , .menu_main_nav_area .menu_main_wrap ').show(100);
 
         }
     });

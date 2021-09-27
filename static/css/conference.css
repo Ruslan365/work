@@ -48,7 +48,8 @@
 }
 
 .frame {
-    transition: all 0.2s;
+    transition: all 0.5s ease-out;
+
 }
 
 @media (max-width: 400px) {
