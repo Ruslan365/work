@@ -68,7 +68,7 @@
         {% else %}
         {% endif %}
         <div class='form-wrapper'>
-            <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/" method="post" id="post-form">
+            <form action="http://127.0.0.1:8000/profile/dge{{ user.id }}du/" method="POST" id="post-form" enctype="multipart/form-data">
                 {{ post_form.as_p|safe }}
                 {% csrf_token %}
                 <input type="submit" value="Close" onclick="hideForm()">

@@ -115,6 +115,11 @@
     content: '\e808';
 }
 
+.icon-email::before {
+    content: '\e80f';
+    color: #f1f1f1;
+}
+
 .non{
     vertical-align: bottom;
     height: 100%;

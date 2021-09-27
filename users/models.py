@@ -6,7 +6,7 @@ from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.db.models import Q
-
+from PIL import Image
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -62,7 +62,7 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True)
     role = models.CharField(max_length=30, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    last_login_at = models.DateTimeField(blank=True, null=True)
+    last_login_at = models.DateTimeField(blank=True, null=True, auto_now=True)
     objects = UserManager()
     birth_date = models.DateField(blank=True, null=True)
     USERNAME_FIELD = "email"
@@ -81,3 +81,34 @@ class User(AbstractUser):
     def age(self):
         return  date.today().year - self.birth_date.year + 1
 
+    def save(self, *args, **kwargs):
+        super().save()
+        img = Image.open(self.avatar.path)
+        width, height = img.size  # Get dimensions
+
+        if width > 300 and height > 300:
+            # keep ratio but shrink down
+            img.thumbnail((width, height), Image.ANTIALIAS)
+
+
+        # check which one is smaller
+        if height < width:
+            # make square by cutting off equal amounts left and right
+            left = (width - height) / 2
+            right = (width + height) / 2
+            top = 0
+            bottom = height
+            img = img.crop((left, top, right, bottom))
+
+        elif width < height:
+            # make square by cutting off bottom
+            left = 0
+            right = width
+            top = 0
+            bottom = width
+            img = img.crop((left, top, right, bottom))
+
+        if width > 300 and height > 300:
+            img.thumbnail((300, 300))
+
+        img.save(self.avatar.path, quality=100)

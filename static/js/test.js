@@ -47,11 +47,15 @@ function closeSearch() {
 
 
 // Prevents search form from sending empty query
-var form = document.getElementById('search_form');
-var query = document.getElementById('query');
-form.addEventListener('submit', evt => {
-    if (query.value.length === 0) {
-        evt.preventDefault();
-    }
-});
+// var query = document.getElementById('query');
+// query.addEventListener('input', evt => {
+//     if (query.value.length < 3) {
+//         evt.preventDefault();
+//     }
+// });
 
+const input = document.querySelector('input')
+input.addEventListener('input', evt => {
+  // Validate input
+    evt.preventDefault()
+})

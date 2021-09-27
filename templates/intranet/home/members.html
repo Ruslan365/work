@@ -1,12 +1,15 @@
-    {% extends 'intranet/home/home_page.html' %}
+{% extends 'intranet/home/home_page.html' %}
 {% load static %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/members.css' %}">
-    <div class="page_title">MEMBERS</div>
+    <h1 class="page_title">MEMBERS</h1>
     {% for us in users.choices.all %}
         <div class="ivc_char">
-            <div class="picture">
-                <p><img src="{{ us.avatar.url }}" class="picture"></p>
+            <a href = "http://127.0.0.1:8000/profile/dge{{user.id}}du/" class = "image_link">
+                    <img src="{{ us.avatar.url }}" class="picture"><span class = "mask">DASDAS</span>
+            </a>
+            <div class = "user_info">
+            <a href = "mailto:{{ us.email }}" class = "send_mail icon-email"></a>
             </div>
             <div class="sc_team_item">
                 <h3 class="name"> {{ us.first_name }}

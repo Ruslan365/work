@@ -22,13 +22,14 @@ def profile_page(request, id):
     user_posts = Post.objects.filter(author__id=id)
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     if request.method == "POST":
-        post_form = PostForm(data=request.POST)
+        post_form = PostForm(request.POST, request.FILES)
         if post_form.is_valid():
-            preview_img = post_form.cleaned_data.get("preview_pic")
+            preview_pic = post_form.cleaned_data.get("preview_pic")
             title = request.POST.get("title")
             body = request.POST.get("body")
             tag = post_form.cleaned_data.get("tag")
             new_post = Post.objects.create(
+                preview_pic= preview_pic,
                 author=request.user,
                 title=title,
                 body=body,
@@ -47,7 +48,7 @@ def profile_page(request, id):
                 for t in tags:
                     new_post.tag.add(t)
             new_post.save()
-            return redirect(f"http://127.0.0.1:8000/dge{request.user.id}du")
+            return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du/")
     else:
         post_form = PostForm()
     return render(
