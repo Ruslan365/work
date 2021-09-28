@@ -115,6 +115,11 @@
     content: '\e808';
 }
 
+.icon-email::before {
+    content: '\e80f';
+    color: #f1f1f1;
+}
+
 .non{
     vertical-align: bottom;
     height: 100%;
@@ -754,6 +759,7 @@ html, body {
 .content_mobile{
     max-width: 84vw;
     width: 84vw;
+    transition: 0.7s;
 }
 
 .search_wrap input[type="text"] {
@@ -769,6 +775,7 @@ html, body {
 
 .content_wrap{
     height: calc(100vh - 200px);
+    transition: 0.7s;
 }
 
 @media (max-width: 1023px) {

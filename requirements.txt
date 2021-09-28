@@ -4,7 +4,7 @@ black==20.8b1
 cachetools==4.2.1
 click==7.1.2
 cycler==0.10.0
-Pillow
+Pillow~=7.0.0
 Django==3.1.7
 django-appconf==1.0.4
 django-crispy-forms==1.11.2
@@ -67,3 +67,9 @@ ViTables==3.0.2
 yarg==0.1.9
 Django>=3.0,<4.0
 psycopg2-binary>=2.8
+pip~=20.0.2
+wheel~=0.34.2
+cryptography~=2.8
+keyring~=18.0.1
+setuptools~=45.2.0
+docutils~=0.16

@@ -9,3 +9,4 @@ class Work(models.Model):
     location = models.CharField(max_length=30, blank=True)
     salary = models.CharField(max_length=30, blank=True)
     deadline = models.CharField(max_length=300, choices=CHOICES)
+    description = models.TextField(default="", max_length=255)

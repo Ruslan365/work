@@ -1,12 +1,17 @@
-    {% extends 'intranet/home/home_page.html' %}
+{% extends 'intranet/home/home_page.html' %}
 {% load static %}
 {% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/members.css' %}">
-    <div class="page_title">MEMBERS</div>
+    <h1 class="page_title">MEMBERS</h1>
     {% for us in users.choices.all %}
-        <div class="ivc_char">
-            <div class="picture">
-                <p><img src="{{ us.avatar.url }}" class="picture"></p>
+        <div class= "ivc_char">
+            <div class = 'back_picture'  >
+                <a>
+                        <img src="{{ us.avatar.url }}" class="picture"><span class = "mask"></span>
+                </a>
+            </div>
+            <div class = "user_info">
+                <a href = "mailto:{{ us.email }}" class = "send_mail fa fa-envelope" ></a>
             </div>
             <div class="sc_team_item">
                 <h3 class="name"> {{ us.first_name }}
