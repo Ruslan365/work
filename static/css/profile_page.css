@@ -312,12 +312,6 @@ figure, .wp_caption_overlay .wp_caption {
     font-size: 0.928em
 }
 
-.widget_area ul {
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0
-}
-
 
 
 
@@ -326,14 +320,7 @@ figure, .wp_caption_overlay .wp_caption {
     color: #8a8d90
 }
 
-.sc_list_style_iconed li .sc_list_icon {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1em;
-    display: inline-block;
-    text-align: center
-}
+
 
 .icon-location-1::before {
     content: '\e808'
@@ -351,11 +338,6 @@ figure, .wp_caption_overlay .wp_caption {
 
 
 
-.sc_list_style_iconed li {
-    padding: 0 0 0 1.5em;
-    list-style: none;
-    position: relative
-}
 
 ul > li, ol > li, dl > dd {
     margin-bottom: 0.5em
@@ -385,10 +367,6 @@ a, button {
     margin-bottom: 0
 }
 
-.widget_area ul li {
-    position: relative;
-    padding-left: 1em
-}
 
 .sidebar .widget_area_inner .widget_nav_menu ul li::before {
     content: '\f111';

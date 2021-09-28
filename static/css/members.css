@@ -41,6 +41,7 @@
 .picture {
     height: 175px;
     width: 100%;
+    position: relative;
     transition: all 0.3s;
 }
 
@@ -106,8 +107,20 @@ h1{
 .back_picture>a{
     padding: 0;
 }
+a{
+    padding: 0;
+}
+.fa-twitter{
+}
+.ivc_char:hover .fa-twitter{
+    display: block;
+}
 .send_mail{
     color: white;
+}
+.icons{
+    position: absolute;
+    padding-bottom: 50px;
 }
 .menu_main_wrap {
     background-color: #383a3f;

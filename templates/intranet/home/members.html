@@ -5,10 +5,13 @@
     <h1 class="page_title">MEMBERS</h1>
     {% for us in users.choices.all %}
         <div class= "ivc_char">
+
             <div class = 'back_picture'  >
                 <a>
                         <img src="{{ us.avatar.url }}" class="picture"><span class = "mask"></span>
                 </a>
+
+
             </div>
             <div class = "user_info">
                 <a href = "mailto:{{ us.email }}" class = "send_mail fa fa-envelope" ></a>
