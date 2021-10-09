@@ -55,12 +55,17 @@
 @media (max-width: 400px) {
 
     .frame {
-        width: 400px
+        width: 300px
     }
     .content_wrap{
         width: 100%;
         max-width: 100%;
     }
+    .dir_box{
+        width: 300px !important;
+        max-width: 300px !important;
+    }
+
 }
 .menu_main_wrap {
     background-color: #383a3f;

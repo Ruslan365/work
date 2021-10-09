@@ -86,3 +86,6 @@ table a {
     border-radius: 3.2px;
 }
 }
+td {
+    width: 24%;
+}

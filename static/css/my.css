@@ -784,9 +784,6 @@ html, body {
         display: inline-block;
     }
 
-    .menu_main_wrap {
-        display: none;
-    }
 
     #sidebar_wrap {
         display: none;

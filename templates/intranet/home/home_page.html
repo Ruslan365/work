@@ -184,6 +184,8 @@
                 </div>
             </div>
         </div>
+
+<div id="like_button_container"></div>
             <footer class="footer_wrap widget_area scheme_original">
                 <div class="footer_wrap_inner widget_area_inner">
                     <div class="content_wrap_footer">
@@ -253,6 +255,7 @@
     });
 </script>
 <script>
+    if($(window).width() < 767) {$(' .menu_main_wrap, #menu_main ').hide(100);}
     $('.menu_pushy').on('click', function () {
         if ($('#menu_main').is(':visible')) {
             $(' .menu_main_wrap, #menu_main ').hide(100);
@@ -347,5 +350,9 @@ let new_availableTags = [];
                     });
             });
 </script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+  <script src="like_button.js"></script>
 </body>
 </html>
