@@ -7,13 +7,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from posts.models import Post, Tag
 from posts.forms import PostForm
 
-@login_required(login_url="http://127.0.0.1:8000/login/")
+@login_required(login_url="localhost/login/")
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect("/")
 
 
-@login_required(login_url="http://127.0.0.1:8000/login/")
+@login_required(login_url="localhost/login/")
 def profile_page(request, id):
     queryset = User.objects.birthdays()
     new_post = None
@@ -48,7 +48,7 @@ def profile_page(request, id):
                 for t in tags:
                     new_post.tag.add(t)
             new_post.save()
-            return redirect(f"http://127.0.0.1:8000/profile/dge{request.user.id}du/")
+            return redirect(f"localhost/profile/dge{request.user.id}du/")
     else:
         post_form = PostForm()
     return render(
@@ -65,7 +65,7 @@ def profile_page(request, id):
         },
     )
 
-@login_required(login_url="http://127.0.0.1:8000/login/")
+@login_required(login_url="localhost/login/")
 def profile_editor(request, id):
     recent_posts = Post.objects.filter(is_published=1)[:5:]
     queryset = User.objects.birthdays()

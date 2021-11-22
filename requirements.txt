@@ -5,6 +5,7 @@ cachetools==4.2.1
 click==7.1.2
 cycler==0.10.0
 Pillow~=7.0.0
+django-extensions
 Django==3.1.7
 django-appconf==1.0.4
 django-crispy-forms==1.11.2
