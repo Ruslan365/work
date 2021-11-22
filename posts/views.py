@@ -11,7 +11,7 @@ from django.views import View
 from django.contrib.contenttypes.models import ContentType
 
 
-@login_required(login_url="localhost/login/")
+@login_required(login_url="/login/")
 def post_list(request):
     queryset = User.objects.birthdays()
     recent_posts = Post.objects.filter(is_published=1)[:5:]
@@ -25,7 +25,7 @@ def post_list(request):
     )
 
 
-@login_required(login_url="localhost/login/")
+@login_required(login_url="/login/")
 def post_detail(request, pk):
     queryset = User.objects.birthdays()
     post = Post.objects.get(pk=pk)
@@ -62,13 +62,13 @@ def post_detail(request, pk):
     )
 
 
-@login_required(login_url="localhost/login/")
+@login_required(login_url="/login/")
 def comment_page(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     return render(request, 'intranet/post/comment_page.html', {'comment': comment})
 
 
-@login_required(login_url="localhost/login/")
+@login_required(login_url="/login/")
 def tag_page(request, tag):
     posts = Post.objects.filter(tag__name=tag)
     return render(
@@ -80,7 +80,7 @@ def tag_page(request, tag):
     )
 
 
-@login_required(login_url="localhost/login/")
+@login_required(login_url="/login/")
 def home_page(request):
     titles = []
     queryset = User.objects.birthdays()
